@@ -4,17 +4,21 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using HighlightPlus;
 
 public class GameManager : MonoBehaviour
 {
     public Canvas DoubleA;
     public Canvas SolidA;
+    public Canvas SolidA2;
     public Canvas Counter;
     public GameObject ButtonSet1;
     private int Unicount=0;
     public GameObject ElecBall;
     public GameObject Vendor;
     public TextMeshProUGUI Text1;
+
+    private bool IsEightSeconds = false;
 
     // Start is called before the first frame update
     void Start()
@@ -90,12 +94,25 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Clicked Blow Button");
         Counter.gameObject.SetActive(true);
+        SolidA.gameObject.SetActive(false);
         StartCoroutine(Timer());
+    }
+
+    public void ButtonGlow(GameObject Button)
+    {
+        Button.GetComponent<HighlightEffect>().enabled = true;
+    }
+
+    public void ButtonNotGlow(GameObject Button)
+    {
+        Button.GetComponent<HighlightEffect>().enabled = false;
     }
 
     protected IEnumerator Timer()
     {
-        for(int i = 8; i >= 0; i--)
+        IsEightSeconds = false;
+
+        for (int i = 8; i >= 0; i--)
         {
             if (i > 1)
             {
@@ -108,7 +125,8 @@ public class GameManager : MonoBehaviour
             else
             {
                 Counter.gameObject.SetActive(false);
-                SolidA.gameObject.SetActive(false);
+                SolidA2.gameObject.SetActive(true);
+                IsEightSeconds = true;
             }
 
             yield return new WaitForSeconds(1);
@@ -117,6 +135,14 @@ public class GameManager : MonoBehaviour
 
     public void ClickedPowerButton()
     {
+        if (!IsEightSeconds)
+        {
+            //Audio
+        }
+        else
+        {
+            SolidA2.gameObject.SetActive(false);
+        }
         Debug.Log("Clicked Power Button");
     }
 }
