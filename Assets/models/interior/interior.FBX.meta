@@ -35,6 +35,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: roofB
+    second: {fileID: 2100000, guid: 138c64f782141d442a9d13592f0cdb22, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: temp
     second: {fileID: 2100000, guid: 3035a2e85548e0043b1cae7421c7efcb, type: 2}
   - first:
