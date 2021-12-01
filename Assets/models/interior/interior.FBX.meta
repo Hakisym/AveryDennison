@@ -11,22 +11,37 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: 07 - Default
-    second: {fileID: 2100000, guid: 66e8a98364481434d85252d1d9a1597c, type: 2}
+    second: {fileID: 2100000, guid: e753b174de612b249b676198a1e5cc49, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: door 1
-    second: {fileID: 2100000, guid: 47f2990fcc7424444ba8aacf77dd48d2, type: 2}
+    second: {fileID: 2100000, guid: 440901f1833338f4e9b690d90d076fcc, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: door 2
-    second: {fileID: 2100000, guid: 14a4b67d7c364644f86584d00a4bd800, type: 2}
+    second: {fileID: 2100000, guid: cda0b83a3709fc14daba7af4c1dda3b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: floor
+    second: {fileID: 2100000, guid: 311ce86c9711faf40899f6336f0aefb9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: roof2
-    second: {fileID: 2100000, guid: 1abe8e4aa44e074439681003fd47d9b1, type: 2}
+    second: {fileID: 2100000, guid: 57857060f2417af4dacf63bac603dd7e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: temp
+    second: {fileID: 2100000, guid: 3035a2e85548e0043b1cae7421c7efcb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wallB
+    second: {fileID: 2100000, guid: 6ba807020c46f2b499a31be904abd4de, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
