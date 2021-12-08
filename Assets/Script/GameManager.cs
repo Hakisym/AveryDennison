@@ -12,13 +12,18 @@ public class GameManager : MonoBehaviour
     public Canvas SolidA;
     public Canvas SolidA2;
     public Canvas Counter;
+
     public GameObject ButtonSet1;
-    private int Unicount=0;
     public GameObject ElecBall;
     public GameObject Vendor;
-    public TextMeshProUGUI Text1;
+    public GameObject Case;
 
+    public TextMeshProUGUI Text1;
+    public Animator Clipper;
+
+    private int Unicount = 0;
     private bool IsEightSeconds = false;
+    private bool IsSnapClip = false;
 
     // Start is called before the first frame update
     void Start()
@@ -92,10 +97,14 @@ public class GameManager : MonoBehaviour
 
     public void ClickedBlowButton()
     {
-        Debug.Log("Clicked Blow Button");
-        Counter.gameObject.SetActive(true);
-        SolidA.gameObject.SetActive(false);
-        StartCoroutine(Timer());
+        if (SolidA.gameObject.activeSelf)
+        {
+            Debug.Log("Clicked Blow Button");
+            Counter.gameObject.SetActive(true);
+            SolidA.gameObject.SetActive(false);
+            StartCoroutine(Timer());
+        }
+        
     }
 
     public void ButtonGlow(GameObject Button)
@@ -110,39 +119,62 @@ public class GameManager : MonoBehaviour
 
     protected IEnumerator Timer()
     {
-        IsEightSeconds = false;
+            IsEightSeconds = false;
 
-        for (int i = 8; i >= 0; i--)
-        {
-            if (i > 1)
+            for (int i = 8; i >= 0; i--)
             {
-                Text1.text = "Countdown:" + i + " Minutes";
-            }
-            else if(i==1)
-            {
-                Text1.text = "Countdown:" + i + " Minute";
-            }
-            else
-            {
-                Counter.gameObject.SetActive(false);
-                SolidA2.gameObject.SetActive(true);
-                IsEightSeconds = true;
-            }
+                if (i > 1)
+                {
+                    Text1.text = "Countdown:" + i + " Minutes";
+                }
+                else if (i == 1)
+                {
+                    Text1.text = "Countdown:" + i + " Minute";
+                }
+                else
+                {
+                    Counter.gameObject.SetActive(false);
+                    SolidA2.gameObject.SetActive(true);
+                    IsEightSeconds = true;
+                }
 
-            yield return new WaitForSeconds(1);
-        }
+                yield return new WaitForSeconds(1);
+            }
     }
 
     public void ClickedPowerButton()
     {
-        if (!IsEightSeconds)
+        if (IsEightSeconds&& SolidA2.gameObject.activeSelf)
         {
-            //Audio
+            SolidA2.gameObject.SetActive(false);
+
+
         }
         else
         {
-            SolidA2.gameObject.SetActive(false);
+            //Audio
         }
         Debug.Log("Clicked Power Button");
+    }
+
+    public void Ongrab(GameObject Case)
+    {
+        foreach(var item in Case.GetComponentsInChildren<MeshRenderer>())
+        {
+            item.enabled = true;
+        }
+    }
+
+    public void OnNotGrab(GameObject Clip)
+    {
+
+    }
+
+    public void OnSnapClip()
+    {
+        foreach (var item in Case.GetComponentsInChildren<MeshRenderer>())
+        {
+            item.enabled = false;
+        }
     }
 }

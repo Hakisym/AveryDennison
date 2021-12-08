@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Collider
+  - Canvas
+  - Clip
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Restricted
   - Player
   - Grabbable
-  - 
+  - NotRender
   - 
   - 
   - 
