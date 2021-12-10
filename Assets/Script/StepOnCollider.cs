@@ -25,6 +25,7 @@ public class StepOnCollider : MonoBehaviour
             Debug.Log("Enter Zone 1");
             DoubleA.gameObject.SetActive(false);
             FourA.gameObject.SetActive(true);
+            this.GetComponent<BoxCollider>().enabled = true;
         }
     }
 

@@ -8,15 +8,16 @@ using HighlightPlus;
 
 public class GameManager : MonoBehaviour
 {
-    public Canvas DoubleA;
-    public Canvas SolidA;
-    public Canvas SolidA2;
+    public Canvas Arrow1;
+    public Canvas Ring1;
+    public Canvas Ring2;
     public Canvas Counter;
 
     public GameObject ButtonSet1;
     public GameObject ElecBall;
     public GameObject Vendor;
     public GameObject Case;
+    public GameObject CubeCollider;
 
     public TextMeshProUGUI Text1;
     public Animator Clipper;
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        initialised();
+        Initialised();
     }
 
     // Update is called once per frame
@@ -74,12 +75,8 @@ public class GameManager : MonoBehaviour
         RightUniform();
     }
 
-    protected void OnCollisionStay(Collision collision)
-    {
-        
-    }
 
-    public void initialised()
+    public void Initialised()
     {
         ElecBall.GetComponentInChildren<SphereCollider>().enabled = false;
         ElecBall.GetComponentInChildren<HighlightEffect>().enabled = false;
@@ -92,16 +89,18 @@ public class GameManager : MonoBehaviour
         Debug.Log("Clicked Vendor");
         Vendor.GetComponent<HighlightEffect>().enabled = false;
         Vendor.GetComponent<BoxCollider>().enabled = false;
-        DoubleA.gameObject.SetActive(true);
+        Arrow1.gameObject.SetActive(true);
+        CubeCollider.GetComponent<BoxCollider>().enabled = true;
+
     }
 
     public void ClickedBlowButton()
     {
-        if (SolidA.gameObject.activeSelf)
+        if (Ring1.gameObject.activeSelf)
         {
             Debug.Log("Clicked Blow Button");
             Counter.gameObject.SetActive(true);
-            SolidA.gameObject.SetActive(false);
+            Ring1.gameObject.SetActive(false);
             StartCoroutine(Timer());
         }
         
@@ -134,7 +133,7 @@ public class GameManager : MonoBehaviour
                 else
                 {
                     Counter.gameObject.SetActive(false);
-                    SolidA2.gameObject.SetActive(true);
+                    Ring2.gameObject.SetActive(true);
                     IsEightSeconds = true;
                 }
 
@@ -144,17 +143,16 @@ public class GameManager : MonoBehaviour
 
     public void ClickedPowerButton()
     {
-        if (IsEightSeconds&& SolidA2.gameObject.activeSelf)
+        if (IsEightSeconds&& Ring2.gameObject.activeSelf)
         {
-            SolidA2.gameObject.SetActive(false);
-
+            Ring2.gameObject.SetActive(false);
+            Debug.Log("Clicked Power Button");
 
         }
         else
         {
             //Audio
         }
-        Debug.Log("Clicked Power Button");
     }
 
     public void Ongrab(GameObject Case)

@@ -29685,12 +29685,13 @@ GameObject:
   - component: {fileID: 5848061498432996100}
   - component: {fileID: 3317686819432415367}
   - component: {fileID: 3551182609276907682}
+  - component: {fileID: 2072799366}
   m_Layer: 0
   m_Name: Box002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5848061498432996100
 Transform:
@@ -29755,6 +29756,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2072799366
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198319826577282626}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 31e43319c85cf0848a9fcac346320fc8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2202876933397839480
 GameObject:
   m_ObjectHideFlags: 0
@@ -53898,7 +53918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5561154187237966032
 Transform:
   m_ObjectHideFlags: 0
@@ -54050,6 +54070,7 @@ GameObject:
   - component: {fileID: 585328434820528735}
   - component: {fileID: 6866398007261212549}
   - component: {fileID: 5253538459823933247}
+  - component: {fileID: 101843940}
   m_Layer: 0
   m_Name: floor
   m_TagString: Untagged
@@ -54133,6 +54154,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 135.33276, y: 46.117313, z: 0.100000024}
   m_Center: {x: 10.612268, y: -1.7366661, z: -0.050000887}
+--- !u!114 &101843940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4386339415596574310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9700cab1eef69154db1b72e6500659e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Clip: {fileID: 4911519217660978692}
+  Case: {fileID: 5253538460166920870}
 --- !u!1 &4389518168248303649
 GameObject:
   m_ObjectHideFlags: 0
@@ -59296,7 +59331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9100807390438263400
 Transform:
   m_ObjectHideFlags: 0
@@ -59823,6 +59858,7 @@ GameObject:
   - component: {fileID: 5253538460100385617}
   - component: {fileID: 5253538460100385618}
   - component: {fileID: 5253538460100385616}
+  - component: {fileID: 823356275135860516}
   m_Layer: 0
   m_Name: jdj
   m_TagString: Clip
@@ -59878,8 +59914,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.050526563, y: 0.52562493, z: 0.050468717}
-  m_Center: {x: -0.002859891, y: 0.005179414, z: -0.0015478241}
+  m_Size: {x: 0.050526563, y: 0.592829, z: 0.32714295}
+  m_Center: {x: -0.002859891, y: 0.014894221, z: -0.0044581476}
 --- !u!114 &5253538460100385618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59909,19 +59945,7 @@ MonoBehaviour:
         m_CallState: 2
   onRelease:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnNotGrab
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 4911519217660978692}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onBecomesClosestGrabbable:
     m_PersistentCalls:
       m_Calls: []
@@ -60040,6 +60064,25 @@ MonoBehaviour:
   UseCustomInspector: 1
   lastFlickTime: 0
   FlickForce: 1
+--- !u!114 &823356275135860516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4911519217660978692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90ed01ac5d94e9468b242b4c38496a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HapticsOnValidPickup: 1
+  HapticsOnValidRemotePickup: 1
+  HapticsOnCollision: 1
+  HapticsOnGrab: 1
+  VibrateFrequency: 0.3
+  VibrateAmplitude: 0.1
+  VibrateDuration: 0.1
 --- !u!1 &4911519217741894835
 GameObject:
   m_ObjectHideFlags: 0
@@ -64316,7 +64359,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: ClickedBlowButton
+        m_MethodName: ClickedPowerButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -67769,7 +67812,7 @@ GameObject:
   - component: {fileID: 5253538461332189996}
   - component: {fileID: 5253538461332189997}
   m_Layer: 5
-  m_Name: SolidArrow
+  m_Name: Ring1
   m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68769,7 +68812,7 @@ GameObject:
   - component: {fileID: 5253538461595978035}
   - component: {fileID: 5253538461595978036}
   m_Layer: 5
-  m_Name: SolidArrow2
+  m_Name: Ring2
   m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97801,12 +97844,13 @@ GameObject:
   - component: {fileID: 8396496683722533480}
   - component: {fileID: 6236716249431573928}
   - component: {fileID: 8685611899347234129}
+  - component: {fileID: 252990539}
   m_Layer: 0
   m_Name: Box001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &8396496683722533480
 Transform:
@@ -97871,6 +97915,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &252990539
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7427225626494402924}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c4c3d7952cfbf9d48813651eefa9037a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7427610172727793919
 GameObject:
   m_ObjectHideFlags: 0
@@ -105885,8 +105948,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vendor: {fileID: 7885299661948152306}
-  Door1: {fileID: 0}
-  Door2: {fileID: 0}
+  Door1: {fileID: 7427225626494402924}
+  Door2: {fileID: 2198319826577282626}
 --- !u!114 &5253538459824689914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124630,7 +124693,7 @@ BoxCollider:
   m_GameObject: {fileID: 9083048295794203159}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 3.6973133, y: 3.0321302, z: 2.1569552}
   m_Center: {x: -0.17218111, y: 1.494919, z: 0.22938678}
@@ -124647,7 +124710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DoubleA: {fileID: 0}
-  FourA: {fileID: 0}
+  FourA: {fileID: 5253538461332189995}
 --- !u!1 &9091476348211128894
 GameObject:
   m_ObjectHideFlags: 0
