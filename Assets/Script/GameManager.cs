@@ -175,4 +175,16 @@ public class GameManager : MonoBehaviour
             item.enabled = false;
         }
     }
+
+    public void PotRight()
+    {
+        //audio
+        Debug.Log("Right snap point");
+    }
+
+    public void PotWrong()
+    {
+        Debug.Log("Wrong snap point");
+        ColliderTrigger.instance.HoseCollide();
+    }
 }
