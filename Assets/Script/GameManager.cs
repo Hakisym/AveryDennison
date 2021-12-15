@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     public GameObject CubeCollider;
 
     public TextMeshProUGUI Text1;
-    public Animator Clipper;
 
     private int Unicount = 0;
     private bool IsEightSeconds = false;

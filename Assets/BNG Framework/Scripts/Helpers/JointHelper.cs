@@ -50,7 +50,7 @@ namespace BNG {
                 currentRotation = transform.localEulerAngles;
                 transform.localEulerAngles = new Vector3(LockXRotation ? initialRotation.x : currentRotation.x, LockYRotation ? initialRotation.y : currentRotation.y, LockZRotation ? initialRotation.z : currentRotation.z);
             }
-        }
+    }
 
         void LateUpdate() {
             lockPosition();
