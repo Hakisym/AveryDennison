@@ -5,7 +5,7 @@ using BNG;
 
 public class PotCollider : MonoBehaviour
 {
-    public GameObject Interaction;
+    public GameObject Glue;
     public Animator Animator;
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,9 @@ public class PotCollider : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(false);
             Animator.enabled = true;
+            Glue.SetActive(true);
         }
     }
+
+    
 }
