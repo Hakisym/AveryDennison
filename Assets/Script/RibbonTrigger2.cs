@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HighlightPlus;
 
 public class RibbonTrigger2 : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class RibbonTrigger2 : MonoBehaviour
         {
             RopeParent.transform.GetChild(2).gameObject.SetActive(true);
             RopeParent.transform.GetChild(3).GetComponent<MeshRenderer>().enabled = false;
+            GetComponent<HighlightEffect>().enabled = false;
         }
     }
 }

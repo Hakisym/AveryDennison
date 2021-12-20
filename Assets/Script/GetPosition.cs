@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GetPosition : MonoBehaviour
 {
-    private Transform transform;
+    private Transform Transform;
     public GameObject Glue;
 
     public GameObject LeverC;
@@ -23,13 +23,13 @@ public class GetPosition : MonoBehaviour
     }
     public void GetTransform()
     {
-        transform = Glue.transform.parent.parent;
-        LeverC.transform.position = transform.position;
-        transform = Glue.transform.parent.parent.parent;
-        LeverC.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x - 90, transform.localEulerAngles.y + 90, transform.localEulerAngles.z);
+        Transform = Glue.transform.parent.parent;
+        LeverC.transform.position = Transform.position;
+        Transform = Glue.transform.parent.parent.parent;
+        LeverC.transform.localEulerAngles = new Vector3(Transform.localEulerAngles.x - 90, Transform.localEulerAngles.y + 90, Transform.localEulerAngles.z);
         GrabPoint.transform.parent = Hinge.transform;
         GrabPoint.transform.localScale = Vector3.one;
-        GrabPoint.transform.localEulerAngles = new Vector3(transform.localEulerAngles.x + 90, transform.localEulerAngles.y - 90, transform.localEulerAngles.z);
+        GrabPoint.transform.localEulerAngles = new Vector3(Transform.localEulerAngles.x + 90, Transform.localEulerAngles.y - 90, Transform.localEulerAngles.z);
         Glue.transform.parent.parent = Hinge.transform;
         Glue.transform.parent = LeverC.transform.parent;
 

@@ -1,10 +1,7 @@
-using BNG;
 using HighlightPlus;
 using System.Collections;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using HighlightPlus;
+using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
@@ -188,4 +185,5 @@ public class GameManager : MonoBehaviour
         Debug.Log("Wrong snap point");
         ColliderTrigger.instance.HoseCollide();
     }
+
 }
