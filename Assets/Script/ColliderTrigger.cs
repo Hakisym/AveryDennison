@@ -21,7 +21,7 @@ public class ColliderTrigger : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Clip")
+        if (collision.gameObject.name == "jdj")
         {
             Debug.Log("Collide with floor");
             Clip.transform.position = new Vector3(23.8780994f, 1.26820004f, -4.29580021f);

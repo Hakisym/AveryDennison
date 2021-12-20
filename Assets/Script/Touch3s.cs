@@ -8,8 +8,7 @@ public class Touch3s : MonoBehaviour
 {
     float TouchTime = 0;
     public GameObject Vendor;
-    public GameObject Door1;
-    public GameObject Door2;
+    public GameObject VideoPlayer;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,8 +38,7 @@ public class Touch3s : MonoBehaviour
                 this.GetComponent<SphereCollider>().enabled = false;
                 Vendor.GetComponent<HighlightEffect>().enabled = true;
                 Vendor.GetComponent<BoxCollider>().enabled = true;
-                Door1.GetComponent<Animator>().enabled = true;
-                Door2.GetComponent<Animator>().enabled = true;
+                VideoPlayer.SetActive(true);
             }
             
         }

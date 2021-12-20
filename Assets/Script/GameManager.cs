@@ -18,8 +18,10 @@ public class GameManager : MonoBehaviour
     public GameObject Vendor;
     public GameObject Case;
     public GameObject CubeCollider;
+    public GameObject VideoPlayer;
 
     public TextMeshProUGUI Text1;
+
 
     private int Unicount = 0;
     private bool IsEightSeconds = false;
@@ -90,7 +92,7 @@ public class GameManager : MonoBehaviour
         Vendor.GetComponent<BoxCollider>().enabled = false;
         Arrow1.gameObject.SetActive(true);
         CubeCollider.GetComponent<BoxCollider>().enabled = true;
-
+        VideoPlayer.SetActive(false);
     }
 
     public void ClickedBlowButton()
