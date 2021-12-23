@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class GetPosition : MonoBehaviour
 {
-    private Transform Transform;
+    public static GetPosition instance;
+    private Transform Trans;
     public GameObject Glue;
 
     public GameObject LeverC;
     public GameObject Hinge;
     public GameObject GrabPoint;
+    public bool Leak;
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this; 
     }
 
     // Update is called once per frame
@@ -23,15 +25,19 @@ public class GetPosition : MonoBehaviour
     }
     public void GetTransform()
     {
-        Transform = Glue.transform.parent.parent;
-        LeverC.transform.position = Transform.position;
-        Transform = Glue.transform.parent.parent.parent;
-        LeverC.transform.localEulerAngles = new Vector3(Transform.localEulerAngles.x - 90, Transform.localEulerAngles.y + 90, Transform.localEulerAngles.z);
-        GrabPoint.transform.parent = Hinge.transform;
-        GrabPoint.transform.localScale = Vector3.one;
-        GrabPoint.transform.localEulerAngles = new Vector3(Transform.localEulerAngles.x + 90, Transform.localEulerAngles.y - 90, Transform.localEulerAngles.z);
-        Glue.transform.parent.parent = Hinge.transform;
-        Glue.transform.parent = LeverC.transform.parent;
+        Trans = this.transform;//get animation transform
+        LeverC.transform.position = Trans.position;
+        Trans = this.transform.parent;//get handle transform
+        //LeverC.transform.localEulerAngles = new Vector3(Trans.localEulerAngles.x - 90, Trans.localEulerAngles.y + 90, Trans.localEulerAngles.z);
+        //In case eulerAngles don't work
+        LeverC.transform.eulerAngles = new Vector3(Trans.eulerAngles.x - 90, Trans.eulerAngles.y - 90, Trans.eulerAngles.z - 90);
 
+        GrabPoint.transform.parent = Hinge.transform;//set grabpoint parent to hinge
+        GrabPoint.transform.localScale = Vector3.one;//reset grabpoint scale
+
+        Glue.transform.parent.parent = Hinge.transform;//set mesh parent to hinge
+        Glue.transform.parent = LeverC.transform.parent;//set glue parent to Interactions
+
+        Leak = true;
     }
 }

@@ -24,7 +24,7 @@ public class ColliderTrigger : MonoBehaviour
         if (collision.gameObject.name == "jdj")
         {
             Debug.Log("Collide with floor");
-            Clip.transform.position = new Vector3(23.8780994f, 1.26820004f, -4.29580021f);
+            Clip.transform.position = new Vector3(23.8855f, 1.28929996f, -4.29629993f);
             Clip.transform.rotation = Quaternion.Euler(0, 0, 0);
             Clip.GetComponent<Rigidbody>().isKinematic = true;
             foreach (var item in Case.GetComponentsInChildren<MeshRenderer>())
@@ -45,4 +45,11 @@ public class ColliderTrigger : MonoBehaviour
         Hose.transform.rotation = Quaternion.Euler(0, 0, 0);
         Hose.GetComponent<Rigidbody>().isKinematic = true;
     }
+
+    public void LerpPosition()
+    {
+        Hose.transform.position = Vector3.Lerp(Hose.transform.position, new Vector3(23.2652588f, 1.01317358f, -3.81183529f), Time.deltaTime);
+    }
+
+    
 }

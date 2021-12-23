@@ -2,6 +2,7 @@ using HighlightPlus;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using BNG;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,11 +12,13 @@ public class GameManager : MonoBehaviour
     public Canvas Counter;
 
     public GameObject ButtonSet1;
+    public GameObject ButtonSet2;
     public GameObject ElecBall;
     public GameObject Vendor;
     public GameObject Case;
     public GameObject CubeCollider;
     public GameObject VideoPlayer;
+    private GameObject Pillow;
 
     public TextMeshProUGUI Text1;
 
@@ -27,7 +30,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Initialised();
+
     }
 
     // Update is called once per frame
@@ -76,10 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void Initialised()
     {
-        ElecBall.GetComponentInChildren<SphereCollider>().enabled = false;
-        ElecBall.GetComponentInChildren<HighlightEffect>().enabled = false;
-        //Vendor.GetComponent<HighlightEffect>().enabled = false;
-        //Vendor.GetComponent<PointerEvents>().enabled = false;
+
     }
 
     public void SelectVendor()
@@ -186,4 +186,45 @@ public class GameManager : MonoBehaviour
         ColliderTrigger.instance.HoseCollide();
     }
 
+    public void RightPPE()
+    {
+        ButtonSet2.SetActive(false);
+        GeneratePPE();
+    }
+
+    public void WrongPPE(GameObject Button)
+    {
+        if (Unicount == 0)
+        {
+            //AudioMain.instance.EventPlayClip(1, false);
+            Button.SetActive(false);
+            Unicount++;
+        }
+        else
+        {
+            //AudioMain.instance.EventPlayClip(1, false);
+            Button.SetActive(false);
+            Unicount = 0;
+            StartCoroutine(AutoHide2());
+        }
+    }
+
+    public void GeneratePPE()
+    {
+
+    }
+
+    protected IEnumerator AutoHide2()
+    {
+        yield return new WaitForSeconds(5);
+        RightPPE();
+    }
+
+    public void GenerateStuff()
+    {
+        string prefabName = "weidang";
+        Pillow = Instantiate(Resources.Load(prefabName, typeof(GameObject))) as GameObject;
+    }
+
+    
 }

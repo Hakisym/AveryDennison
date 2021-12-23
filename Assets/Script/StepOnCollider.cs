@@ -20,7 +20,7 @@ public class StepOnCollider : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Collider")
+        if (other.gameObject.tag == "RigHand")
         {
             Debug.Log("Enter Zone 1");
             DoubleA.gameObject.SetActive(false);

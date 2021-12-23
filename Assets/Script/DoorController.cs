@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Collider")
+        if (other.gameObject.tag == "RigHand" )
         {
             DoorLeft.SetBool("Enter", true);
             DoorLeft.SetBool("Exit", false);
@@ -33,7 +33,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Collider")
+        if (other.gameObject.tag == "RigHand" && GetPosition.instance.Leak == false)
         {
             DoorLeft.SetBool("Enter", false);
             DoorLeft.SetBool("Exit", true);

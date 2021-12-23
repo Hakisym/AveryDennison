@@ -24,7 +24,7 @@ public class Touch3s : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Collider")
+        if (other.gameObject.tag == "RigHand")
         {
             if (TouchTime < 3f)
             {
