@@ -55,6 +55,25 @@ public class PotCollider : MonoBehaviour
             Animator.enabled = true;
             Glue.SetActive(true);
         }
+
+        //if (other.gameObject.name == "GrabHose")
+        //{
+        //    if (Count == 0)
+        //    {
+        //        Debug.Log("Collide with Pot inside X 1");
+        //        ColliderTrigger.instance.HoseCollide();
+        //        Count++;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log("Collide with Pot inside X 2");
+        //        ColliderTrigger.instance.HoseCollide();
+        //        Lerp = true;
+        //        Count = 0;
+        //    }
+
+        //}
+
     }
     IEnumerator LerpHose()
     {
