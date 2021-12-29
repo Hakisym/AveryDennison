@@ -6,13 +6,16 @@ using BNG;
 
 public class SmokeController : MonoBehaviour
 {
+    public static SmokeController instance;
     public ParticleSystem ps;
     public Text text;
-    private int i = 0;
+    internal int i = 0;
     RaycastHit hit;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         ps = GetComponent<ParticleSystem>();
     }
 
@@ -23,21 +26,27 @@ public class SmokeController : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, 1 << 0, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.gameObject.name == "jh")
+                if (hit.collider.gameObject.name == "jh" && i<=100 )//&& (Time.time - time > 0.1)
                 {
-                    StartCoroutine("Quarter");
-                    hit.collider.enabled = false;
+                    i++;
+                    time = Time.time;
+                }
+                if(hit.collider.gameObject.name == "CenterCol")
+                {
+                    //Audio
+                    Debug.Log("Don't spray at the center!");
                 }
             }
         }
         
+        text.text = i+"%";
 
-        text.text = i+"/4";
+        if (i == 100)
+        {
+            i = 0;
+            GameManager.instance.Napkin();
+        }
 
-        //if(i == 4)
-        //{
-
-        //}
     }
 
     public void Hold()
@@ -50,9 +59,4 @@ public class SmokeController : MonoBehaviour
         ps.Stop();
     }
 
-    IEnumerator Quarter()
-    {
-        yield return new WaitForSeconds(2f);
-        i++;
-    }
 }

@@ -8,26 +8,17 @@ public class PotCollider : MonoBehaviour
     public GameObject Glue;
     public Animator Animator;
     private int Count = 0;
-    private bool Lerp;
     // Start is called before the first frame update
     void Start()
     {
         GetComponent<Rigidbody>().isKinematic = true;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Lerp)
-        {
-            StartCoroutine("LerpHose");
-        }
-    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name == "GrabHose")
         {
-            if(Count == 0)
+            if (Count == 0)
             {
                 Debug.Log("Collide with Pot inside X 1");
                 ColliderTrigger.instance.HoseCollide();
@@ -37,12 +28,12 @@ public class PotCollider : MonoBehaviour
             {
                 Debug.Log("Collide with Pot inside X 2");
                 ColliderTrigger.instance.HoseCollide();
-                Lerp = true;
+                ColliderTrigger.instance.LerpPosition();
                 Count = 0;
             }
-            
+
         }
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -68,17 +59,12 @@ public class PotCollider : MonoBehaviour
         //    {
         //        Debug.Log("Collide with Pot inside X 2");
         //        ColliderTrigger.instance.HoseCollide();
-        //        Lerp = true;
+        //        ColliderTrigger.instance.LerpPosition();
         //        Count = 0;
         //    }
 
         //}
 
     }
-    IEnumerator LerpHose()
-    {
-        ColliderTrigger.instance.LerpPosition();
-        yield return new WaitForSeconds(4f);
-        Lerp = false;
-    }
+    
 }

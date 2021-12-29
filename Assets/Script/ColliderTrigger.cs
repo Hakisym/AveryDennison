@@ -8,6 +8,7 @@ public class ColliderTrigger : MonoBehaviour
     public GameObject Clip;
     public GameObject Case;
     public GameObject Hose;
+    float startTime;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -48,8 +49,19 @@ public class ColliderTrigger : MonoBehaviour
 
     public void LerpPosition()
     {
-        Hose.transform.position = Vector3.Lerp(Hose.transform.position, new Vector3(23.2652588f, 1.01317358f, -3.81183529f), Time.deltaTime);
+        StartCoroutine(LerpHose());
     }
 
-    
+    IEnumerator LerpHose()
+    {
+        while (startTime < 3)
+        {
+            Hose.transform.position = Vector3.Lerp(new Vector3(23.4559364f, 1.43595529f, -4.36395168f), new Vector3(23.2652588f, 1.01317358f, -3.81183529f), startTime / 3);
+            startTime += Time.deltaTime;
+            yield return null;
+        }
+            
+    }
+
+
 }

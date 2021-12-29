@@ -6,6 +6,7 @@ using BNG;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     public Canvas Arrow1;
     public Canvas Ring1;
     public Canvas Ring2;
@@ -18,19 +19,29 @@ public class GameManager : MonoBehaviour
     public GameObject Case;
     public GameObject CubeCollider;
     public GameObject VideoPlayer;
+    public GameObject ClothAbs;
+    public GameObject Glue;
+    public GameObject SnapCloth;
+
     private GameObject Pillow;
+    private GameObject Cloth;
 
     public TextMeshProUGUI Text1;
 
-
     private int Unicount = 0;
+    private int PrefabCount = 0;
     private bool IsEightSeconds = false;
     private bool IsSnapClip = false;
+    private bool SwitchPrefab = false;
+
+    private string prefabName1 = "weidang";
+    private string prefabName2 = "FrictionCloth";
 
     // Start is called before the first frame update
     void Start()
     {
-
+        instance = this;
+        ButtonSet1.transform.parent.gameObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -222,9 +233,31 @@ public class GameManager : MonoBehaviour
 
     public void GenerateStuff()
     {
-        string prefabName = "weidang";
-        Pillow = Instantiate(Resources.Load(prefabName, typeof(GameObject))) as GameObject;
+        if (!SwitchPrefab)
+        {
+            Pillow = Instantiate(Resources.Load(prefabName1, typeof(GameObject))) as GameObject;
+        }
+        if (PrefabCount < 1  )//&& SwitchPrefab
+        {
+            Cloth = Instantiate(Resources.Load(prefabName2, typeof(GameObject))) as GameObject;
+            Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
+            PrefabCount++;
+        }
+
     }
 
+    public void Napkin()
+    {
+            foreach(Collider item in GetComponents<Collider>())
+            {
+                item.enabled = false;
+            }
+            Glue.transform.GetChild(1).gameObject.SetActive(false);
+            Glue.transform.GetChild(2).gameObject.SetActive(false);
+            Glue.transform.GetChild(4).gameObject.SetActive(true);
+            Glue.GetComponent<HighlightEffect>().enabled = true;
+            SnapCloth.SetActive(true);
+            SwitchPrefab = true;
+    }
     
 }
