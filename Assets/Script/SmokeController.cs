@@ -30,6 +30,8 @@ public class SmokeController : MonoBehaviour
                 {
                     i++;
                     time = Time.time;
+
+                    text.text = i + "%";
                 }
                 if(hit.collider.gameObject.name == "CenterCol")
                 {
@@ -39,7 +41,6 @@ public class SmokeController : MonoBehaviour
             }
         }
         
-        text.text = i+"%";
 
         if (i == 100)
         {

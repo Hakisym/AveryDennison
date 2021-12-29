@@ -45,25 +45,8 @@ public class PotCollider : MonoBehaviour
             transform.GetChild(1).gameObject.SetActive(false);
             Animator.enabled = true;
             Glue.SetActive(true);
+            Glue.transform.parent.GetComponent<BoxCollider>().isTrigger = true;
         }
-
-        //if (other.gameObject.name == "GrabHose")
-        //{
-        //    if (Count == 0)
-        //    {
-        //        Debug.Log("Collide with Pot inside X 1");
-        //        ColliderTrigger.instance.HoseCollide();
-        //        Count++;
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("Collide with Pot inside X 2");
-        //        ColliderTrigger.instance.HoseCollide();
-        //        ColliderTrigger.instance.LerpPosition();
-        //        Count = 0;
-        //    }
-
-        //}
 
     }
     

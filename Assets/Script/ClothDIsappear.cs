@@ -10,6 +10,9 @@ public class ClothDIsappear : MonoBehaviour
     public GameObject Cloth;
     public GameObject Solver;
     public GameObject SnapPoint;
+    public Collider[] colliders;
+    public GameObject[] gameObjects;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +35,16 @@ public class ClothDIsappear : MonoBehaviour
     {
         Cloth.GetComponent<ObiParticleAttachment>().enabled = true;
         Cloth.transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+
+        foreach(var item in colliders)
+        {
+            item.enabled = true;
+        }
+        foreach(var item in gameObjects)
+        {
+            item.SetActive(true);
+        }
+        animator.transform.parent.gameObject.SetActive(true);
+
     }
 }

@@ -34,14 +34,15 @@ public class GlueController : MonoBehaviour
     {
         if (other.gameObject.name == "ClothCol")
         {
+            Debug.Log("Collide with Cloth");
             transform.GetChild(0).parent = Interaction.transform;
-            Debug.Log(other.gameObject.name);
             animator.SetTrigger("Absorb");
-            StartCoroutine(DisableHighlight());
+            other.gameObject.SetActive(false);
+            StartCoroutine(SetGrabCloth());
         }
     }
 
-    IEnumerator DisableHighlight()
+    IEnumerator SetGrabCloth()
     {
         yield return new WaitForSeconds(10);
         GetComponent<HighlightEffect>().enabled = false;

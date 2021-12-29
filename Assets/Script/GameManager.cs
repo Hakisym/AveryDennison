@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
     public GameObject Case;
     public GameObject CubeCollider;
     public GameObject VideoPlayer;
-    public GameObject ClothAbs;
     public GameObject Glue;
     public GameObject SnapCloth;
+
+    public Animator animator;
 
     private GameObject Pillow;
     private GameObject Cloth;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
 
     private int Unicount = 0;
     private int PrefabCount = 0;
+    private int ChemicalCount = 0;
     private bool IsEightSeconds = false;
     private bool IsSnapClip = false;
     private bool SwitchPrefab = false;
@@ -258,6 +260,21 @@ public class GameManager : MonoBehaviour
             Glue.GetComponent<HighlightEffect>().enabled = true;
             SnapCloth.SetActive(true);
             SwitchPrefab = true;
+    }
+
+    public void SnapChemicals(SnapZone snapZone)
+    {
+        if(snapZone.HeldItem.gameObject.name == "Grab")
+        {
+            GameObject.Find("FrictionCloth").SetActive(false);
+        }
+        snapZone.HeldItem.gameObject.SetActive(false);
+        snapZone.ReleaseAll();
+        ChemicalCount++;
+        if (ChemicalCount >= 5)
+        {
+            animator.SetTrigger("Close");
+        }
     }
     
 }
