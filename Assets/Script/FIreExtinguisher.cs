@@ -10,6 +10,7 @@ public class FIreExtinguisher : MonoBehaviour
     public Rigidbody Hose;
     public ParticleSystem ps;
     public Text text;
+    public GameObject Mesh;
     internal int i = 0;
     RaycastHit hit;
     float time;
@@ -27,8 +28,6 @@ public class FIreExtinguisher : MonoBehaviour
     {
         Handle.isKinematic = true;
         Hose.isKinematic = true;
-        //Handle.isKinematic = false;
-        //Hose.isKinematic = false;
     }
 
     // Update is called once per frame
@@ -107,7 +106,7 @@ public class FIreExtinguisher : MonoBehaviour
         SwtRunning = true;
         while (startTime_2 < 3)
         {
-            Hose.transform.parent.GetChild(1).rotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, 90), startTime_2 / 3);
+            Mesh.transform.GetChild(0).rotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, 90), startTime_2 / 3);
             startTime_2 += Time.deltaTime;
             yield return null;
         }
@@ -124,16 +123,17 @@ public class FIreExtinguisher : MonoBehaviour
 
     IEnumerator TurnSafety()
     {
-        Vector3 position = Hose.transform.parent.GetChild(2).position;
+        Vector3 position = Mesh.transform.GetChild(1).position;
         SafeRunning = true;
         while (startTime_3 < 2)
         {
-            Hose.transform.parent.GetChild(2).position = Vector3.Lerp(position, new Vector3(position.x,position.y,position.z-0.3f), startTime_3 / 2);
+            Mesh.transform.GetChild(1).position = Vector3.Lerp(position, new Vector3(position.x,position.y,position.z-0.3f), startTime_3 / 2);
             startTime_3 += Time.deltaTime;
             yield return null;
         }
-        Hose.transform.parent.GetChild(2).GetComponent<Rigidbody>().isKinematic = false;
+        Mesh.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
         SafeRunning = false;
         SafeRun = true;
     }
+
 }
