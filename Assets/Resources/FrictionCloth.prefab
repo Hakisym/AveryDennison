@@ -52,7 +52,7 @@ MonoBehaviour:
   GrabButton: 2
   Grabtype: 2
   GrabPhysics: 4
-  GrabMechanic: 0
+  GrabMechanic: 1
   GrabSpeed: 15
   RemoteGrabbable: 0
   RemoteGrabMechanic: 1

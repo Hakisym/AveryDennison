@@ -29,6 +29,7 @@ public class RibbonTrigger : MonoBehaviour
         }
     }
 
+
     public void GrabTape()
     {
         GetComponent<HighlightEffect>().enabled = true;

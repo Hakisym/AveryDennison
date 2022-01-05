@@ -21,7 +21,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "RigHand" )
+        if (other.gameObject.tag == "RigHand" && GetPosition.instance.Retreat == false)
         {
             DoorLeft.SetBool("Enter", true);
             DoorLeft.SetBool("Exit", false);

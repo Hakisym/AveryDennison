@@ -11,7 +11,7 @@ public class SmokeController : MonoBehaviour
     public Text text;
     internal int i = 0;
     RaycastHit hit;
-    float time = 0;
+    float time;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +26,12 @@ public class SmokeController : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, 1 << 0, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.gameObject.name == "FireCollider" )
+                if (hit.collider.gameObject.name == "jh" && i<=100 )//&& (Time.time - time > 0.1)
                 {
-                    time += Time.deltaTime;
+                    i++;
+                    time = Time.time;
 
-                    text.text = time + "S";
+                    text.text = i + "%";
                 }
                 if(hit.collider.gameObject.name == "CenterCol")
                 {

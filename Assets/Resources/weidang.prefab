@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 9066496976176288893}
   - component: {fileID: 5180494424245632618}
   - component: {fileID: 919132148079501308}
+  - component: {fileID: 5926652640755424730}
   m_Layer: 0
   m_Name: weidang
   m_TagString: Untagged
@@ -444,3 +445,16 @@ MonoBehaviour:
   UseCustomInspector: 1
   lastFlickTime: 0
   FlickForce: 1
+--- !u!114 &5926652640755424730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292359939743093458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01404a5a30ea2e4db8fd7d34b4390b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollidersToIgnore: []

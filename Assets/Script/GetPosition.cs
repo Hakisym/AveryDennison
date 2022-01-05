@@ -12,6 +12,7 @@ public class GetPosition : MonoBehaviour
     public GameObject Hinge;
     public GameObject GrabPoint;
     public bool Leak;
+    public bool Retreat;
     // Start is called before the first frame update
     void Start()
     {

@@ -9,8 +9,10 @@ public class FIreExtinguisher : MonoBehaviour
     public Rigidbody Handle;
     public Rigidbody Hose;
     public ParticleSystem ps;
+    public ParticleSystem Spark;
     public Text text;
     public GameObject Mesh;
+    public GameObject Emmiter;
     internal int i = 0;
     RaycastHit hit;
     float time;
@@ -35,28 +37,38 @@ public class FIreExtinguisher : MonoBehaviour
     {
         if (ps.isPlaying)
         {
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, 1 << 0, QueryTriggerInteraction.Collide))
+            if (Physics.Raycast(Hose.transform.position, Emmiter.transform.forward, out hit, 1f, 1 << 0, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.gameObject.name == "jh" && i <= 100)//&& (Time.time - time > 0.1)
+                if (hit.collider.gameObject.name == "FireCollider")
                 {
-                    i++;
-                    time = Time.time;
-
-                    text.text = i + "%";
+                    if (time < 10)
+                    {
+                        time += Time.deltaTime;
+                        time.ToString("F2");
+                        text.text = string.Format("{0:F2}S", time);
+                    }
+                    else//If reach 10 seconds disable UI and particles 
+                    {
+                        time = 10;
+                        text.text = 10+"S";
+                        text.transform.parent.gameObject.SetActive(false);
+                        GameManager.instance.fire.Stop();
+                        UnHold();
+                        GetPosition.instance.Leak = false;
+                        GetPosition.instance.Retreat = true;
+                    }
+                    
                 }
-                if (hit.collider.gameObject.name == "CenterCol")
+                
+                if (hit.collider.gameObject.name == "FireCollider_Center")
                 {
                     //Audio
+                    PlaySpark();
                     Debug.Log("Don't spray at the center!");
                 }
             }
         }
 
-
-        if (i == 100)
-        {
-            i = 0;
-        }
     }
     public void Hold()
     {
@@ -106,7 +118,7 @@ public class FIreExtinguisher : MonoBehaviour
         SwtRunning = true;
         while (startTime_2 < 3)
         {
-            Mesh.transform.GetChild(0).rotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, 90), startTime_2 / 3);
+            Mesh.transform.GetChild(0).localRotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, 0, 90), startTime_2 / 3);
             startTime_2 += Time.deltaTime;
             yield return null;
         }
@@ -134,6 +146,17 @@ public class FIreExtinguisher : MonoBehaviour
         Mesh.transform.GetChild(1).GetComponent<Rigidbody>().isKinematic = false;
         SafeRunning = false;
         SafeRun = true;
+    }
+    public void PlaySpark()
+    {
+        StartCoroutine(Sparking());
+    }
+
+    IEnumerator Sparking()
+    {
+        Spark.Play();
+        yield return new WaitForSeconds(2);
+        Spark.Stop();
     }
 
 }

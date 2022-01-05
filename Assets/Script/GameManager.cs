@@ -24,10 +24,16 @@ public class GameManager : MonoBehaviour
 
     public Animator animator;
 
+    public ParticleSystem fire;
+
     private GameObject Pillow;
     private GameObject Cloth;
 
     public TextMeshProUGUI Text1;
+
+    public Collider RigController;
+    public Collider Clipper;
+    public Collider GrabHose;
 
     private int Unicount = 0;
     private int PrefabCount = 0;
@@ -43,18 +49,12 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
-        ButtonSet1.transform.parent.gameObject.SetActive(true);
+        ButtonSet1.SetActive(true);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public void RightUniform()
     {
         //AudioMain.instance.EventPlayClip(0, false);
-        //set static ball glowing,collider on
         ElecBall.GetComponentInChildren<HighlightEffect>().enabled = true;
         ElecBall.GetComponentInChildren<SphereCollider>().enabled = true;
         ButtonSet1.SetActive(false);
@@ -158,7 +158,8 @@ public class GameManager : MonoBehaviour
         {
             Ring2.gameObject.SetActive(false);
             Debug.Log("Clicked Power Button");
-
+            Clipper.enabled = true;
+            Clipper.transform.GetChild(2).gameObject.SetActive(true);
         }
         else
         {
@@ -185,6 +186,8 @@ public class GameManager : MonoBehaviour
         {
             item.enabled = false;
         }
+        GrabHose.enabled = true;
+        GrabHose.transform.GetChild(2).gameObject.SetActive(true);
     }
 
     public void PotRight()
@@ -238,8 +241,9 @@ public class GameManager : MonoBehaviour
         if (!SwitchPrefab)
         {
             Pillow = Instantiate(Resources.Load(prefabName1, typeof(GameObject))) as GameObject;
+            Pillow.GetComponent<IgnoreColliders>().CollidersToIgnore.Add(RigController);
         }
-        if (PrefabCount < 1  )//&& SwitchPrefab
+        if (PrefabCount < 1 && SwitchPrefab )
         {
             Cloth = Instantiate(Resources.Load(prefabName2, typeof(GameObject))) as GameObject;
             Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
@@ -274,6 +278,7 @@ public class GameManager : MonoBehaviour
         if (ChemicalCount >= 5)
         {
             animator.SetTrigger("Close");
+            fire.gameObject.SetActive(true);
         }
     }
     
