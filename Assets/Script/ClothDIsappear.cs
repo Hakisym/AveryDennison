@@ -13,6 +13,7 @@ public class ClothDIsappear : MonoBehaviour
     public Collider[] colliders;
     public GameObject[] gameObjects;
     public Animator animator;
+    public HighlightPlus.HighlightEffect Bag;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +45,8 @@ public class ClothDIsappear : MonoBehaviour
         {
             item.SetActive(true);
         }
-        animator.transform.parent.gameObject.SetActive(true);
+        Bag.gameObject.SetActive(true);//Garbage bag appears
+        Bag.enabled = true;
 
     }
 }

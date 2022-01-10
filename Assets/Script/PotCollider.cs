@@ -6,6 +6,7 @@ using BNG;
 public class PotCollider : MonoBehaviour
 {
     public GameObject Glue;
+    public Collider Walkie;
     public Animator Animator;
     private int Count = 0;
     // Start is called before the first frame update
@@ -40,12 +41,19 @@ public class PotCollider : MonoBehaviour
         if (other.gameObject.name == "TripCollider")
         {
             Debug.Log("Start Tripping");
+            //Stop moving the handle and kill the Snappoint
             this.GetComponent<Rigidbody>().isKinematic = true;
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(false);
+            //start both animations and cancel box collider
             Animator.enabled = true;
             Glue.SetActive(true);
             Glue.transform.parent.GetComponent<BoxCollider>().isTrigger = true;
+
+            GameManager.instance.GrabbableCollider(GameManager.instance.Clipper, false);
+            GameManager.instance.GrabbableCollider(GameManager.instance.GrabHose, false);
+            GameManager.instance.GrabbableCollider(Walkie, true);
+            Walkie.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
         }
 
     }

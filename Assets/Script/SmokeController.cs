@@ -26,12 +26,13 @@ public class SmokeController : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, transform.forward, out hit, 1f, 1 << 0, QueryTriggerInteraction.Collide))
             {
-                if (hit.collider.gameObject.name == "jh" && i<=100 )//&& (Time.time - time > 0.1)
+                if (hit.collider.gameObject.name == "jh" && i<=100 && (Time.time - time > 0.1))
                 {
                     i++;
                     time = Time.time;
 
                     text.text = i + "%";
+                    GameManager.instance.HighlightController(GameManager.instance.Glue, false);
                 }
                 if(hit.collider.gameObject.name == "CenterCol")
                 {
@@ -42,9 +43,9 @@ public class SmokeController : MonoBehaviour
         }
         
 
-        if (i == 100)
+        if (i == 101)
         {
-            i = 0;
+            i++;
             GameManager.instance.Napkin();
         }
 

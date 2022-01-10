@@ -6,6 +6,7 @@ using HighlightPlus;
 public class RibbonTrigger2 : MonoBehaviour
 {
     public GameObject RopeParent;
+    public HighlightEffect LEL;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,8 @@ public class RibbonTrigger2 : MonoBehaviour
             RopeParent.transform.GetChild(2).gameObject.SetActive(true);
             RopeParent.transform.GetChild(3).GetComponent<MeshRenderer>().enabled = false;
             GetComponent<HighlightEffect>().enabled = false;
+            GameManager.instance.GrabbableCollider(GameManager.instance.LEL, true);
+            LEL.enabled = true;
         }
     }
 }

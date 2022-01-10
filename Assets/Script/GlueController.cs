@@ -6,16 +6,20 @@ using BNG;
 
 public class GlueController : MonoBehaviour
 {
+    public static GlueController instance;
     public GameObject Pillow;
     public Animator animator;
     public GameObject Interaction;
     public MeshRenderer[] meshRenderers;
     public Color newColor;
 
-    
+
+    private void Start()
+    {
+        instance = this;
+    }
     public void SecurePillow()
     {
-        Pillow.SetActive(true);
         Pillow.transform.GetChild(0).GetComponent<HighlightEffect>().enabled = true;
         Pillow.transform.GetChild(4).gameObject.SetActive(true);
     }
@@ -30,6 +34,8 @@ public class GlueController : MonoBehaviour
         }
     }
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "ClothCol")
@@ -38,6 +44,7 @@ public class GlueController : MonoBehaviour
             transform.GetChild(0).parent = Interaction.transform;
             animator.SetTrigger("Absorb");
             other.gameObject.SetActive(false);
+            GetComponent<HighlightEffect>().enabled = false;
             StartCoroutine(SetGrabCloth());
         }
     }
@@ -45,7 +52,6 @@ public class GlueController : MonoBehaviour
     IEnumerator SetGrabCloth()
     {
         yield return new WaitForSeconds(10);
-        GetComponent<HighlightEffect>().enabled = false;
         ClothDIsappear.instance.SetGrabbable();
     }
 }

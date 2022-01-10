@@ -46,6 +46,7 @@ public class FIreExtinguisher : MonoBehaviour
                         time += Time.deltaTime;
                         time.ToString("F2");
                         text.text = string.Format("{0:F2}S", time);
+                        GameManager.instance.FireTong.enabled = false;
                     }
                     else//If reach 10 seconds disable UI and particles 
                     {
@@ -56,6 +57,8 @@ public class FIreExtinguisher : MonoBehaviour
                         UnHold();
                         GetPosition.instance.Leak = false;
                         GetPosition.instance.Retreat = true;
+                        GameManager.instance.YellowCap.enabled = true;
+                        GameManager.instance.YellowCap.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
                     }
                     
                 }
@@ -97,7 +100,7 @@ public class FIreExtinguisher : MonoBehaviour
         ValRunning = true;
         while (startTime < 3)
         {
-            Hose.transform.GetChild(0).rotation = Quaternion.Lerp(Quaternion.Euler(0, -21.608f,0), Quaternion.Euler(0, -21.608f, 90), startTime / 3);
+            Hose.transform.GetChild(0).localRotation = Quaternion.Lerp(Quaternion.Euler(0, -21.608f,0), Quaternion.Euler(0, -21.608f, 90), startTime / 3);
             startTime += Time.deltaTime;
             yield return null;
         }
@@ -135,11 +138,11 @@ public class FIreExtinguisher : MonoBehaviour
 
     IEnumerator TurnSafety()
     {
-        Vector3 position = Mesh.transform.GetChild(1).position;
+        Vector3 position = Mesh.transform.GetChild(1).localPosition;
         SafeRunning = true;
         while (startTime_3 < 2)
         {
-            Mesh.transform.GetChild(1).position = Vector3.Lerp(position, new Vector3(position.x,position.y,position.z-0.3f), startTime_3 / 2);
+            Mesh.transform.GetChild(1).localPosition = Vector3.Lerp(position, new Vector3(position.x,position.y,position.z-0.3f), startTime_3 / 2);
             startTime_3 += Time.deltaTime;
             yield return null;
         }

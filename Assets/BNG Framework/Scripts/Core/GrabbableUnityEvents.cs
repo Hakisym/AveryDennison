@@ -37,6 +37,10 @@ namespace BNG {
             }
         }
 
+        public void test()
+        {
+        }
+
         /// <summary>
         /// Has been dropped from the Grabber
         /// </summary>
@@ -47,6 +51,8 @@ namespace BNG {
                 onRelease.Invoke();
             }
         }
+
+
 
         /// <summary>
         /// Called if this is the closest grabbable but wasn't in the previous frame 

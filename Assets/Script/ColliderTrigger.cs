@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HighlightPlus;
 
 public class ColliderTrigger : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class ColliderTrigger : MonoBehaviour
     public GameObject Clip;
     public GameObject Case;
     public GameObject Hose;
+    public HighlightEffect BarrelHandle;
     float startTime;
     // Start is called before the first frame update
     private void Awake()
@@ -60,6 +62,8 @@ public class ColliderTrigger : MonoBehaviour
             startTime += Time.deltaTime;
             yield return null;
         }
+        HoseCollide();
+        //BarrelHandle.enabled = true;
             
     }
 

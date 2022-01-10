@@ -3,6 +3,10 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using BNG;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
+using UnityEditor.Events;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,9 +38,16 @@ public class GameManager : MonoBehaviour
     public Collider RigController;
     public Collider Clipper;
     public Collider GrabHose;
+    public Collider LEL;
+    public Collider SFireExt;
+    public Collider YellowBarrel;
+    public Collider BFireExt;
+    public Collider YellowCap;
+    public HighlightEffect FireTong;
 
     private int Unicount = 0;
-    private int PrefabCount = 0;
+    private int PrefabCount_1 = 0;
+    private int PrefabCount_2 = 0;
     private int ChemicalCount = 0;
     private bool IsEightSeconds = false;
     private bool IsSnapClip = false;
@@ -158,8 +169,7 @@ public class GameManager : MonoBehaviour
         {
             Ring2.gameObject.SetActive(false);
             Debug.Log("Clicked Power Button");
-            Clipper.enabled = true;
-            Clipper.transform.GetChild(2).gameObject.SetActive(true);
+            GrabbableCollider(Clipper, true);
         }
         else
         {
@@ -186,8 +196,7 @@ public class GameManager : MonoBehaviour
         {
             item.enabled = false;
         }
-        GrabHose.enabled = true;
-        GrabHose.transform.GetChild(2).gameObject.SetActive(true);
+        GrabbableCollider(GrabHose, true);
     }
 
     public void PotRight()
@@ -240,29 +249,31 @@ public class GameManager : MonoBehaviour
     {
         if (!SwitchPrefab)
         {
+            if (PrefabCount_1 == 0)
+            {
+                GlueController.instance.SecurePillow();
+            }
             Pillow = Instantiate(Resources.Load(prefabName1, typeof(GameObject))) as GameObject;
             Pillow.GetComponent<IgnoreColliders>().CollidersToIgnore.Add(RigController);
+            PrefabCount_1++;
         }
-        if (PrefabCount < 1 && SwitchPrefab )
+        if (PrefabCount_2 < 1 && SwitchPrefab )
         {
             Cloth = Instantiate(Resources.Load(prefabName2, typeof(GameObject))) as GameObject;
             Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
-            PrefabCount++;
+            PrefabCount_2++;
+            Glue.GetComponent<HighlightEffect>().enabled = true;
         }
 
     }
 
     public void Napkin()
     {
-            foreach(Collider item in GetComponents<Collider>())
-            {
-                item.enabled = false;
-            }
             Glue.transform.GetChild(1).gameObject.SetActive(false);
             Glue.transform.GetChild(2).gameObject.SetActive(false);
-            Glue.transform.GetChild(4).gameObject.SetActive(true);
-            Glue.GetComponent<HighlightEffect>().enabled = true;
             SnapCloth.SetActive(true);
+            Glue.transform.GetChild(4).gameObject.SetActive(true);
+            HighlightController(YellowBarrel.gameObject, true);
             SwitchPrefab = true;
     }
 
@@ -278,8 +289,63 @@ public class GameManager : MonoBehaviour
         if (ChemicalCount >= 5)
         {
             animator.SetTrigger("Close");
+            ClothDIsappear.instance.Bag.enabled = false;
             fire.gameObject.SetActive(true);
+            BFireExt.enabled = true;
+            BFireExt.GetComponent<HighlightEffect>().enabled = true;
         }
     }
     
+    public void GrabbableCollider(Collider collider,bool choice)
+    {
+        collider.enabled = choice;
+        collider.transform.GetChild(1).gameObject.SetActive(choice);
+    }
+
+    public void HighlightController(GameObject gameObject,bool choice)
+    {
+        gameObject.GetComponent<HighlightEffect>().enabled = choice;
+    }
+
+    public void DisableAllEvents(GrabbableUnityEvents events)
+    {
+        int gCount = events.onGrab.GetPersistentEventCount();
+        int rCount = events.onRelease.GetPersistentEventCount();
+        for (int i = 0; i< gCount; i++)
+        {
+            UnityEventTools.RemovePersistentListener(events.onGrab, 0);
+        }
+        for (int j = 0; j < rCount; j++)
+        {
+            UnityEventTools.RemovePersistentListener(events.onRelease, 0);
+        }
+
+    }
+    public void DisableEventsonGrab(GrabbableUnityEvents events)
+    {
+        int gCount = events.onGrab.GetPersistentEventCount();
+        for (int i = 0; i < gCount; i++)
+        {
+            UnityEventTools.RemovePersistentListener(events.onGrab, 0);
+        }
+    }
+
+    public void DisablePointerEventonGrab(PointerEvents events)
+    {
+        int cCount = events.OnPointerClickEvent.GetPersistentEventCount();
+        for (int i = 0; i < cCount; i++)
+        {
+            UnityEventTools.RemovePersistentListener(events.OnPointerClickEvent, 0);
+        }
+    }
+
+    public void TestFloatFunction(float f,float e)
+    {
+        Debug.Log(f+" "+e);
+    }
+
+    public void _TestFloatFunction(float f)
+    {
+        Debug.Log(f);
+    }
 }

@@ -210,7 +210,10 @@ namespace BNG {
     /// A UnityEvent with a Grabber as the parameter
     /// </summary>
     [System.Serializable]
-    public class GrabberEvent : UnityEvent<Grabber> { }
+    public class GrabberEvent : UnityEvent<Grabber>
+    {
+        public object UnityEventTools { get; internal set; }
+    }
 
     /// <summary>
     /// A UnityEvent with a Grabbable as the parameter
