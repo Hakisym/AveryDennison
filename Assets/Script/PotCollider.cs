@@ -17,7 +17,7 @@ public class PotCollider : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "GrabHose")
+        if (collision.gameObject.name == "GrabHose" && !GameManager.instance.ReleaseHose)
         {
             if (Count == 0)
             {
@@ -28,7 +28,6 @@ public class PotCollider : MonoBehaviour
             else
             {
                 Debug.Log("Collide with Pot inside X 2");
-                ColliderTrigger.instance.HoseCollide();
                 ColliderTrigger.instance.LerpPosition();
                 Count = 0;
             }
@@ -54,6 +53,8 @@ public class PotCollider : MonoBehaviour
             GameManager.instance.GrabbableCollider(GameManager.instance.GrabHose, false);
             GameManager.instance.GrabbableCollider(Walkie, true);
             Walkie.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
+
+            GameManager.instance.Arrow3.gameObject.SetActive(false);
         }
 
     }

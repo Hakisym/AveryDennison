@@ -1,17 +1,16 @@
+using BNG;
 using HighlightPlus;
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using BNG;
-using UnityEngine.EventSystems;
 using UnityEngine.Events;
-using UnityEditor.Events;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Canvas Arrow1;
+    public Canvas Arrow2;
+    public Canvas Arrow3;
     public Canvas Ring1;
     public Canvas Ring2;
     public Canvas Counter;
@@ -49,12 +48,14 @@ public class GameManager : MonoBehaviour
     private int PrefabCount_1 = 0;
     private int PrefabCount_2 = 0;
     private int ChemicalCount = 0;
+    public bool ReleaseHose = false;
     private bool IsEightSeconds = false;
     private bool IsSnapClip = false;
     private bool SwitchPrefab = false;
 
     private string prefabName1 = "weidang";
     private string prefabName2 = "FrictionCloth";
+    UnityEventCallState state = UnityEventCallState.Off;
 
     // Start is called before the first frame update
     void Start()
@@ -113,7 +114,6 @@ public class GameManager : MonoBehaviour
         Vendor.GetComponent<BoxCollider>().enabled = false;
         Arrow1.gameObject.SetActive(true);
         CubeCollider.GetComponent<BoxCollider>().enabled = true;
-        VideoPlayer.SetActive(false);
     }
 
     public void ClickedBlowButton()
@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
             Ring2.gameObject.SetActive(false);
             Debug.Log("Clicked Power Button");
             GrabbableCollider(Clipper, true);
+            Arrow2.gameObject.SetActive(false);
         }
         else
         {
@@ -209,6 +210,11 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("Wrong snap point");
         ColliderTrigger.instance.HoseCollide();
+    }
+
+    public void ReleaseRopes()
+    {
+        ReleaseHose = true;
     }
 
     public void RightPPE()
@@ -313,11 +319,12 @@ public class GameManager : MonoBehaviour
         int rCount = events.onRelease.GetPersistentEventCount();
         for (int i = 0; i< gCount; i++)
         {
-            UnityEventTools.RemovePersistentListener(events.onGrab, 0);
+            events.onGrab.SetPersistentListenerState(i, state);
         }
         for (int j = 0; j < rCount; j++)
         {
-            UnityEventTools.RemovePersistentListener(events.onRelease, 0);
+            events.onRelease.SetPersistentListenerState(j, state);
+
         }
 
     }
@@ -326,7 +333,7 @@ public class GameManager : MonoBehaviour
         int gCount = events.onGrab.GetPersistentEventCount();
         for (int i = 0; i < gCount; i++)
         {
-            UnityEventTools.RemovePersistentListener(events.onGrab, 0);
+            events.onGrab.SetPersistentListenerState(i, state);
         }
     }
 
@@ -335,17 +342,12 @@ public class GameManager : MonoBehaviour
         int cCount = events.OnPointerClickEvent.GetPersistentEventCount();
         for (int i = 0; i < cCount; i++)
         {
-            UnityEventTools.RemovePersistentListener(events.OnPointerClickEvent, 0);
+            events.OnPointerClickEvent.SetPersistentListenerState(i, state);
         }
     }
 
-    public void TestFloatFunction(float f,float e)
+    public void WeiDangScale(Transform _WeiDang)
     {
-        Debug.Log(f+" "+e);
-    }
-
-    public void _TestFloatFunction(float f)
-    {
-        Debug.Log(f);
+        _WeiDang.parent.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 }
