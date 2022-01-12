@@ -53,7 +53,6 @@ public class FIreExtinguisher : MonoBehaviour
                         time = 10;
                         text.text = 10+"S";
                         text.transform.parent.gameObject.SetActive(false);
-                        GameManager.instance.fire.Stop();
                         UnHold();
                         GetPosition.instance.Leak = false;
                         GetPosition.instance.Retreat = true;

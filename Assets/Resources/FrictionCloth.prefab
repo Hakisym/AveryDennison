@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 97420435386885696}
   - component: {fileID: 97420435386885699}
   - component: {fileID: 97420435386885702}
+  - component: {fileID: 5804701842088559416}
   m_Layer: 10
   m_Name: Grab
   m_TagString: Untagged
@@ -213,6 +214,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &5804701842088559416
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97420435386886589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4051053, y: 0.4196362, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &97420436150602772
 GameObject:
   m_ObjectHideFlags: 0
