@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject Glue;
     public GameObject SnapCloth;
 
+    public GameObject modelRig;
+
     public Animator animator;
 
     public ParticleSystem fire;
@@ -62,6 +64,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         ButtonSet1.SetActive(true);
+        modelRig.SetActive(true);
     }
 
     public void RightUniform()

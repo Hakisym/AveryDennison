@@ -172,6 +172,8 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: e4c478a95c63c254e929854ab3dcb229, type: 2}
+  - {fileID: 0}
+  - {fileID: -8396960425303346229, guid: 24c8dca56495de74e9f031df96c217bb, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -189,7 +191,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.FXG.AD_Demo_HD
+    Android: com.FXG.AD_Demo
     Standalone: com.BeardedNinjaGames.VRInteractionFramework
   buildNumber:
     Standalone: 0
