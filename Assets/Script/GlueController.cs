@@ -46,6 +46,7 @@ public class GlueController : MonoBehaviour
             other.gameObject.SetActive(false);
             GetComponent<HighlightEffect>().enabled = false;
             StartCoroutine(SetGrabCloth());
+            AudioMain.instance.EventPlayClip(30, false);
         }
     }
 

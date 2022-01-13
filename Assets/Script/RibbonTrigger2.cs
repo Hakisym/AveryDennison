@@ -27,6 +27,7 @@ public class RibbonTrigger2 : MonoBehaviour
             GetComponent<HighlightEffect>().enabled = false;
             GameManager.instance.GrabbableCollider(GameManager.instance.LEL, true);
             LEL.enabled = true;
+            AudioMain.instance.EventPlayClip(23, false);
         }
     }
 }

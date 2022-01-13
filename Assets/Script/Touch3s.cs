@@ -34,7 +34,7 @@ public class Touch3s : MonoBehaviour
             }
             else
             {
-                //AudioMain.instance.EventPlayClip(1, false);
+                AudioMain.instance.PlayDelayClip(3, 4);
                 this.GetComponentInParent<HighlightEffect>().enabled = false;
                 this.GetComponent<SphereCollider>().enabled = false;
                 Vendor.GetComponent<HighlightEffect>().enabled = true;
@@ -51,7 +51,7 @@ public class Touch3s : MonoBehaviour
             }
             else
             {
-                //AudioMain.instance.EventPlayClip(1, false);
+                AudioMain.instance.PlayDelayClip(3, 4);
                 this.GetComponentInParent<HighlightEffect>().enabled = false;
                 this.GetComponent<SphereCollider>().enabled = false;
                 Vendor.GetComponent<HighlightEffect>().enabled = true;

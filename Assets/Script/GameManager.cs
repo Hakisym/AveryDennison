@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public HighlightEffect FireTong;
 
     private int Unicount = 0;
+    private int PPECount = 0;
     private int PrefabCount_1 = 0;
     private int PrefabCount_2 = 0;
     private int ChemicalCount = 0;
@@ -65,11 +66,12 @@ public class GameManager : MonoBehaviour
         instance = this;
         ButtonSet1.SetActive(true);
         modelRig.SetActive(true);
+        AudioMain.instance.EventPlayClip(1, false);
     }
 
     public void RightUniform()
     {
-        //AudioMain.instance.EventPlayClip(0, false);
+        AudioMain.instance.EventPlayClip(2, false);
         ElecBall.GetComponentInChildren<HighlightEffect>().enabled = true;
         ElecBall.GetComponentInChildren<SphereCollider>().enabled = true;
         ButtonSet1.SetActive(false);
@@ -104,12 +106,6 @@ public class GameManager : MonoBehaviour
         RightUniform();
     }
 
-
-    public void Initialised()
-    {
-
-    }
-
     public void SelectVendor()
     {
         Debug.Log("Clicked Vendor");
@@ -117,6 +113,7 @@ public class GameManager : MonoBehaviour
         Vendor.GetComponent<BoxCollider>().enabled = false;
         Arrow1.gameObject.SetActive(true);
         CubeCollider.GetComponent<BoxCollider>().enabled = true;
+        AudioMain.instance.PlayDelayClip(5, 6);
     }
 
     public void ClickedBlowButton()
@@ -174,10 +171,11 @@ public class GameManager : MonoBehaviour
             Debug.Log("Clicked Power Button");
             GrabbableCollider(Clipper, true);
             Arrow2.gameObject.SetActive(false);
+            AudioMain.instance.PlayDelayClip(9, 10);
         }
         else
         {
-            //Audio
+            AudioMain.instance.EventPlayClip(8, false);
         }
     }
 
@@ -205,15 +203,10 @@ public class GameManager : MonoBehaviour
 
     public void PotRight()
     {
-        //audio
+        AudioMain.instance.PlayDelayClip(15, 17);
         Debug.Log("Right snap point");
     }
 
-    public void PotWrong()
-    {
-        Debug.Log("Wrong snap point");
-        ColliderTrigger.instance.HoseCollide();
-    }
 
     public void ReleaseRopes()
     {
@@ -224,21 +217,21 @@ public class GameManager : MonoBehaviour
     {
         ButtonSet2.SetActive(false);
         GeneratePPE();
+        AudioMain.instance.EventPlayClip(26, false);
     }
 
     public void WrongPPE(GameObject Button)
     {
-        if (Unicount == 0)
+        if (PPECount == 0)
         {
-            //AudioMain.instance.EventPlayClip(1, false);
+            AudioMain.instance.EventPlayClip(25, false);
             Button.SetActive(false);
-            Unicount++;
+            PPECount++;
         }
         else
         {
-            //AudioMain.instance.EventPlayClip(1, false);
             Button.SetActive(false);
-            Unicount = 0;
+            PPECount = 0;
             StartCoroutine(AutoHide2());
         }
     }
@@ -302,6 +295,7 @@ public class GameManager : MonoBehaviour
             fire.gameObject.SetActive(true);
             BFireExt.enabled = true;
             BFireExt.GetComponent<HighlightEffect>().enabled = true;
+            AudioMain.instance.PlayDoubleDelay(31, 32, 33);
         }
     }
     
@@ -352,5 +346,25 @@ public class GameManager : MonoBehaviour
     public void WeiDangScale(Transform _WeiDang)
     {
         _WeiDang.parent.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+    }
+
+    public void GrabbableScript(Collider collider)
+    {
+        collider.GetComponent<Grabbable>().enabled = false;
+    }
+
+    public void PlayEventClip(int clip)
+    {
+        AudioMain.instance.EventPlayClip(clip, false);
+    }
+
+    public void PlayDoubleClip(int clip)
+    {
+        AudioMain.instance.PlayDelayClip(clip,clip+1);
+    }
+
+    public void MainFrameButton()
+    {
+        AudioMain.instance.PlayDelayClip(39, 42);
     }
 }

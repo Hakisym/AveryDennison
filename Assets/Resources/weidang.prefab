@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 919132148079501308}
   - component: {fileID: 5926652640755424730}
   - component: {fileID: 9132109075517048420}
+  - component: {fileID: 1880183390}
   m_Layer: 0
   m_Name: weidang
   m_TagString: Untagged
@@ -509,3 +510,16 @@ MonoBehaviour:
   VibrateFrequency: 0.3
   VibrateAmplitude: 0.1
   VibrateDuration: 0.1
+--- !u!65 &1880183390
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292359939743093458}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9450729, y: 0.1600688, z: 0.17553394}
+  m_Center: {x: 0, y: 0, z: 0}

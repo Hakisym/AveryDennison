@@ -58,6 +58,7 @@ public class FIreExtinguisher : MonoBehaviour
                         GetPosition.instance.Retreat = true;
                         GameManager.instance.YellowCap.enabled = true;
                         GameManager.instance.YellowCap.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
+                        AudioMain.instance.EventPlayClip(35, false);
                     }
                     
                 }

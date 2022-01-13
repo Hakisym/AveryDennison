@@ -27,6 +27,7 @@ public class StepOnCollider : MonoBehaviour
             FourA.gameObject.SetActive(true);
             this.GetComponent<BoxCollider>().enabled = false;
             GameManager.instance.Arrow2.gameObject.SetActive(true);
+            AudioMain.instance.EventPlayClip(7, false);
         }
     }
 

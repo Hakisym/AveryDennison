@@ -24,12 +24,14 @@ public class PotCollider : MonoBehaviour
                 Debug.Log("Collide with Pot inside X 1");
                 ColliderTrigger.instance.HoseCollide();
                 Count++;
+                AudioMain.instance.EventPlayClip(13, false);
             }
             else
             {
                 Debug.Log("Collide with Pot inside X 2");
                 ColliderTrigger.instance.LerpPosition();
                 Count = 0;
+                AudioMain.instance.EventPlayClip(14, false);
             }
 
         }
@@ -51,10 +53,14 @@ public class PotCollider : MonoBehaviour
 
             GameManager.instance.GrabbableCollider(GameManager.instance.Clipper, false);
             GameManager.instance.GrabbableCollider(GameManager.instance.GrabHose, false);
+            GameManager.instance.GrabbableScript(GameManager.instance.Clipper);
+            GameManager.instance.GrabbableScript(GameManager.instance.GrabHose);
+
             GameManager.instance.GrabbableCollider(Walkie, true);
             Walkie.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
 
             GameManager.instance.Arrow3.gameObject.SetActive(false);
+            AudioMain.instance.PlayDelayClip(18, 19);
         }
 
     }

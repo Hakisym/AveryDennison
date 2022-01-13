@@ -34,11 +34,20 @@ public class ColliderTrigger : MonoBehaviour
             {
                 item.enabled = false;
             }
+            if (!GameManager.instance.ReleaseHose)
+            {
+                AudioMain.instance.EventPlayClip(12, false);
+            }
+            
         }
         if (collision.gameObject.name == "GrabHose")
         {
             Debug.Log("Collide with floor");
             HoseCollide();
+            if (!GameManager.instance.ReleaseHose)
+            {
+                AudioMain.instance.EventPlayClip(13, false);
+            }
         }
     }
 
@@ -63,8 +72,6 @@ public class ColliderTrigger : MonoBehaviour
             yield return null;
         }
         HoseCollide();
-        //BarrelHandle.enabled = true;
-            
     }
 
 
