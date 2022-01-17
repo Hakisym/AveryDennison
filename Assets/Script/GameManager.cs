@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,8 +25,8 @@ public class GameManager : MonoBehaviour
     public GameObject VideoPlayer;
     public GameObject Glue;
     public GameObject SnapCloth;
-
-    public GameObject modelRig;
+    public GameObject[] modelRig;
+    public GameObject[] Uniform;
 
     public Animator animator;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
     public Collider BFireExt;
     public Collider YellowCap;
     public HighlightEffect FireTong;
+    public HandModelSelector modelSelector;
 
     private int Unicount = 0;
     private int PPECount = 0;
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         ButtonSet1.SetActive(true);
-        modelRig.SetActive(true);
+        modelRig[0].SetActive(true);
         AudioMain.instance.EventPlayClip(1, false);
     }
 
@@ -97,7 +99,11 @@ public class GameManager : MonoBehaviour
 
     public void GenerateUniform()
     {
-        //setactive(true)
+        foreach(var item in Uniform)
+        {
+            item.SetActive(true);
+        }
+        modelSelector.ChangeHandsModel(1, false);
     }
 
     protected IEnumerator AutoHide()
@@ -238,7 +244,9 @@ public class GameManager : MonoBehaviour
 
     public void GeneratePPE()
     {
-
+        modelRig[0].SetActive(false);
+        modelRig[1].SetActive(true);
+        modelSelector.ChangeHandsModel(2, false);
     }
 
     protected IEnumerator AutoHide2()
