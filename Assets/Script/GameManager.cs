@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject ButtonSet1;
     public GameObject ButtonSet2;
+    public GameObject ButtonSet3;
     public GameObject ElecBall;
     public GameObject Vendor;
     public GameObject Case;
@@ -27,6 +29,10 @@ public class GameManager : MonoBehaviour
     public GameObject SnapCloth;
     public GameObject[] modelRig;
     public GameObject[] Uniform;
+    public GameObject[] Vent;
+    public GameObject[] FalseButton;
+    public UnityEngine.UI.Button RightBtt;
+
 
     public Animator animator;
 
@@ -50,6 +56,7 @@ public class GameManager : MonoBehaviour
 
     private int Unicount = 0;
     private int PPECount = 0;
+    private int BttCount = 0;
     private int PrefabCount_1 = 0;
     private int PrefabCount_2 = 0;
     private int ChemicalCount = 0;
@@ -57,7 +64,7 @@ public class GameManager : MonoBehaviour
     private bool IsEightSeconds = false;
     private bool IsSnapClip = false;
     private bool SwitchPrefab = false;
-
+    private float Starttime = 0;
     private string prefabName1 = "weidang";
     private string prefabName2 = "FrictionCloth";
     UnityEventCallState state = UnityEventCallState.Off;
@@ -82,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void WrongUniform(GameObject button)
     {
-        if (Unicount==0)
+        if (Unicount == 0)
         {
             //AudioMain.instance.EventPlayClip(1, false);
             button.SetActive(false);
@@ -99,7 +106,7 @@ public class GameManager : MonoBehaviour
 
     public void GenerateUniform()
     {
-        foreach(var item in Uniform)
+        foreach (var item in Uniform)
         {
             item.SetActive(true);
         }
@@ -131,7 +138,7 @@ public class GameManager : MonoBehaviour
             Ring1.gameObject.SetActive(false);
             StartCoroutine(Timer());
         }
-        
+
     }
 
     public void ButtonGlow(GameObject Button)
@@ -146,32 +153,32 @@ public class GameManager : MonoBehaviour
 
     protected IEnumerator Timer()
     {
-            IsEightSeconds = false;
+        IsEightSeconds = false;
 
-            for (int i = 8; i >= 0; i--)
+        for (int i = 8; i >= 0; i--)
+        {
+            if (i > 1)
             {
-                if (i > 1)
-                {
-                    Text1.text = "Countdown:" + i + " Minutes";
-                }
-                else if (i == 1)
-                {
-                    Text1.text = "Countdown:" + i + " Minute";
-                }
-                else
-                {
-                    Counter.gameObject.SetActive(false);
-                    Ring2.gameObject.SetActive(true);
-                    IsEightSeconds = true;
-                }
-
-                yield return new WaitForSeconds(1);
+                Text1.text = "Countdown:" + i + " Minutes";
             }
+            else if (i == 1)
+            {
+                Text1.text = "Countdown:" + i + " Minute";
+            }
+            else
+            {
+                Counter.gameObject.SetActive(false);
+                Ring2.gameObject.SetActive(true);
+                IsEightSeconds = true;
+            }
+
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void ClickedPowerButton()
     {
-        if (IsEightSeconds&& Ring2.gameObject.activeSelf)
+        if (IsEightSeconds && Ring2.gameObject.activeSelf)
         {
             Ring2.gameObject.SetActive(false);
             Debug.Log("Clicked Power Button");
@@ -187,7 +194,7 @@ public class GameManager : MonoBehaviour
 
     public void Ongrab(GameObject Case)
     {
-        foreach(var item in Case.GetComponentsInChildren<MeshRenderer>())
+        foreach (var item in Case.GetComponentsInChildren<MeshRenderer>())
         {
             item.enabled = true;
         }
@@ -267,7 +274,7 @@ public class GameManager : MonoBehaviour
             Pillow.GetComponent<IgnoreColliders>().CollidersToIgnore.Add(RigController);
             PrefabCount_1++;
         }
-        if (PrefabCount_2 < 1 && SwitchPrefab )
+        if (PrefabCount_2 < 1 && SwitchPrefab)
         {
             Cloth = Instantiate(Resources.Load(prefabName2, typeof(GameObject))) as GameObject;
             Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
@@ -279,17 +286,17 @@ public class GameManager : MonoBehaviour
 
     public void Napkin()
     {
-            Glue.transform.GetChild(1).gameObject.SetActive(false);
-            Glue.transform.GetChild(2).gameObject.SetActive(false);
-            SnapCloth.SetActive(true);
-            Glue.transform.GetChild(4).gameObject.SetActive(true);
-            HighlightController(YellowBarrel.gameObject, true);
-            SwitchPrefab = true;
+        Glue.transform.GetChild(1).gameObject.SetActive(false);
+        Glue.transform.GetChild(2).gameObject.SetActive(false);
+        SnapCloth.SetActive(true);
+        Glue.transform.GetChild(4).gameObject.SetActive(true);
+        HighlightController(YellowBarrel.gameObject, true);
+        SwitchPrefab = true;
     }
 
     public void SnapChemicals(SnapZone snapZone)
     {
-        if(snapZone.HeldItem.gameObject.name == "Grab")
+        if (snapZone.HeldItem.gameObject.name == "Grab")
         {
             GameObject.Find("FrictionCloth").SetActive(false);
         }
@@ -306,14 +313,14 @@ public class GameManager : MonoBehaviour
             AudioMain.instance.PlayDoubleDelay(31, 32, 33);
         }
     }
-    
-    public void GrabbableCollider(Collider collider,bool choice)
+
+    public void GrabbableCollider(Collider collider, bool choice)
     {
         collider.enabled = choice;
         collider.transform.GetChild(1).gameObject.SetActive(choice);
     }
 
-    public void HighlightController(GameObject gameObject,bool choice)
+    public void HighlightController(GameObject gameObject, bool choice)
     {
         gameObject.GetComponent<HighlightEffect>().enabled = choice;
     }
@@ -322,7 +329,7 @@ public class GameManager : MonoBehaviour
     {
         int gCount = events.onGrab.GetPersistentEventCount();
         int rCount = events.onRelease.GetPersistentEventCount();
-        for (int i = 0; i< gCount; i++)
+        for (int i = 0; i < gCount; i++)
         {
             events.onGrab.SetPersistentListenerState(i, state);
         }
@@ -368,11 +375,66 @@ public class GameManager : MonoBehaviour
 
     public void PlayDoubleClip(int clip)
     {
-        AudioMain.instance.PlayDelayClip(clip,clip+1);
+        AudioMain.instance.PlayDelayClip(clip, clip + 1);
     }
 
     public void MainFrameButton()
     {
         AudioMain.instance.PlayDelayClip(39, 42);
+    }
+
+    public void Ventilation()
+    {
+        StartCoroutine(VentSpin());
+    }
+
+    IEnumerator VentSpin()
+    {
+        while (Starttime < 2)
+        {
+            Vent[0].transform.localRotation = Quaternion.Lerp(Quaternion.Euler(0, 0, 45), Quaternion.Euler(0, 0, 0), Starttime / 2);
+            Starttime += Time.deltaTime;
+            yield return null;
+        }
+        Vent[1].SetActive(false);
+    }
+
+    public void RightButton()
+    {
+        ButtonSet3.SetActive(false);
+        AudioMain.instance.PlayDelayClip(48, 50);
+    }
+
+    public void WrongButton(GameObject Button)
+    {
+        if (BttCount == 0)
+        {
+            AudioMain.instance.EventPlayClip(49, false);
+            Button.SetActive(false);
+            BttCount++;
+        }
+        else
+        {
+            AudioMain.instance.EventPlayClip(49, false);
+            foreach (var item in FalseButton)
+            {
+                item.SetActive(false);
+            }
+            ColorBlock cb = new ColorBlock();
+            cb.normalColor = Color.yellow;
+            cb.highlightedColor = Color.green;
+            cb.pressedColor = Color.blue;
+            cb.disabledColor = Color.black;
+            cb.colorMultiplier = 1.0f;
+            RightBtt.colors = cb;
+            StartCoroutine(AutoHide3());
+        }
+    }
+
+
+    protected IEnumerator AutoHide3()
+    {
+        yield return new WaitForSeconds(5);
+        RightButton();
     }
 }
