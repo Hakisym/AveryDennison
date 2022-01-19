@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         ButtonSet1.SetActive(true);
         modelRig[0].SetActive(true);
-        AudioMain.instance.EventPlayClip(1, false);
+        AudioMain.instance.PlayDelayClip(1, 51);
     }
 
     public void RightUniform()
@@ -269,6 +269,7 @@ public class GameManager : MonoBehaviour
             if (PrefabCount_1 == 0)
             {
                 GlueController.instance.SecurePillow();
+                AudioMain.instance.EventPlayClip(56, false);
             }
             Pillow = Instantiate(Resources.Load(prefabName1, typeof(GameObject))) as GameObject;
             Pillow.GetComponent<IgnoreColliders>().CollidersToIgnore.Add(RigController);
@@ -280,6 +281,7 @@ public class GameManager : MonoBehaviour
             Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
             PrefabCount_2++;
             Glue.GetComponent<HighlightEffect>().enabled = true;
+            AudioMain.instance.EventPlayClip(55, false);
         }
 
     }
@@ -437,4 +439,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(5);
         RightButton();
     }
+    
 }
