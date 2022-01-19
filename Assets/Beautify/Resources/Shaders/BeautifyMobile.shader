@@ -82,7 +82,8 @@ Subshader {
 #pragma multi_compile __ BEAUTIFY_PURKINJE
 // Edited by Shader Control: #pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
 #pragma multi_compile __ BEAUTIFY_VIGNETTING 
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
+// Edited by Shader Control: #pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
+#pragma multi_compile __ BEAUTIFY_FRAME 
 #pragma multi_compile __ BEAUTIFY_CHROMATIC_ABERRATION
       #include "BeautifyMobile.cginc"
       ENDCG

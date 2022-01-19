@@ -3,7 +3,7 @@
 // Note that changes to this file will be lost when you update Beautify! Remember to revert this file to your preferences after updating.
 
 // Uncomment this one to support Orthographic Camera
-//#define BEAUTIFY_ORTHO
+#define BEAUTIFY_ORTHO
 
 // Comment out this one to disable sharpen
 #define BEAUTIFY_ENABLE_CORE_EFFECT
@@ -24,29 +24,29 @@
 #define BEAUTIFY_EYE_ADAPTATION_DYNAMIC_RANGE
 
 // Uncomment this to enable occlusion on objects that do not have colliders
-//#define BEAUTIFY_SUN_FLARES_OCCLUSION_DEPTH
+#define BEAUTIFY_SUN_FLARES_OCCLUSION_DEPTH
 
 // Uncomment this to enable occlusion on sky luminance
-//#define BEAUTIFY_SUN_FLARES_OCCLUSION_CHROMA
+#define BEAUTIFY_SUN_FLARES_OCCLUSION_CHROMA
 
 // Uncomment this line to use an alternate ACES tonemap operator
-//#define BEAUTIFY_ACES_FITTED
+#define BEAUTIFY_ACES_FITTED
 
 // Uncomment this line to use a color-based edge detection algorithm instead of a depth based method. Useful for 2D projects.
-//#define BEAUTIFY_OUTLINE_SOBEL
+#define BEAUTIFY_OUTLINE_SOBEL
 
 // Uncomment this line to use a formula instead of Look-Up texture to produce Sepia effect
 //#define BEAUTIFY_USE_PROCEDURAL_SEPIA
 
 // Uncomment this line to improve LUT transform in Best Performance mode
-//#define BEAUTIFY_BETTER_FASTER_LUT
+#define BEAUTIFY_BETTER_FASTER_LUT
 
 // Uncomment this line to enable AntiAliasing
-//#define BEAUTIFY_EDGE_AA
+#define BEAUTIFY_EDGE_AA
 
 // Uncomment this line to enable Hard Light effect
-//#define BEAUTIFY_HARD_LIGHT
+#define BEAUTIFY_HARD_LIGHT
 
 // Uncomment this line to ensure the pixels of the input image are valid
-//#define BEAUTIFY_KILL_NAN
+#define BEAUTIFY_KILL_NAN
 
