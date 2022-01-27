@@ -9,6 +9,7 @@ public class EventManager : MonoBehaviour
 {
     [Header("Here's a cool event! Drag anything here!")]
     public UnityEvent OnStart;
+    public UnityEvent OnRigCollide;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,5 +21,29 @@ public class EventManager : MonoBehaviour
     {
         
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "RigHand")
+        {
+            OnRigCollide.Invoke();
 
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "RigHand")
+        {
+            OnRigCollide.Invoke();
+
+        }
+    }
+
+    public void DisableRigCollideEvents(EventManager events)
+    {
+        int gCount = events.OnRigCollide.GetPersistentEventCount();
+        for (int i = 0; i < gCount; i++)
+        {
+            events.OnRigCollide.SetPersistentListenerState(i, UnityEventCallState.Off);
+        }
+    }
 }
