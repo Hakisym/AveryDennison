@@ -581,7 +581,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actor: {fileID: 400923303398830435}
   m_Target: {fileID: 97420435386885698}
-  m_ParticleGroup: {fileID: 1722111592555884953, guid: 0d04bd42b41049f499c5595f4e0d7a17,
+  m_ParticleGroup: {fileID: 1599857672999054456, guid: d868e8d115851ee49b0cf31061ffec05,
     type: 2}
   m_AttachmentType: 0
   m_ConstrainOrientation: 0

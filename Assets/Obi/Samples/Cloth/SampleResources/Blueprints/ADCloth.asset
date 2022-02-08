@@ -7288,7 +7288,8 @@ MonoBehaviour:
     batches: []
   volumeConstraintsData:
     batches: []
-  groups: []
+  groups:
+  - {fileID: 1599857672999054456}
   inputMesh: {fileID: 4300002, guid: a59c42320188c4432b095000f813a44f, type: 3}
   scale: {x: 0.5, y: 0.5, z: 0.5}
   rotation: {x: 0, y: 0, z: 0, w: 1}
@@ -20337,3 +20338,17 @@ MonoBehaviour:
   - 0.010416668
   - 0.010416666
   - 0.010416666
+--- !u!114 &1599857672999054456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 775ad4994fda946d1a5936c7e2dfc785, type: 3}
+  m_Name: Grab
+  m_EditorClassIdentifier: 
+  particleIndices: e8000000ee000000ef000000f0000000
+  m_Blueprint: {fileID: 11400000}
