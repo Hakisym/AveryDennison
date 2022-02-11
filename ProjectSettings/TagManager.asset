@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RigHand
   - Canvas
+  - InteriorEnvironment
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Grabbable
   - NotRender
   - WorldSpaceIcon
-  - 
+  - DontBLockRaycast
   - 
   - 
   - 
