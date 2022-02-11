@@ -55,6 +55,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 2cec70acbf666a84b8bd12b826858c11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal light
+    second: {fileID: 2100000, guid: d90976680052429479b2d5cbab4f9f88, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: metal yellow
     second: {fileID: 2100000, guid: aa4070d58516a254ba1070f8c1a88e19, type: 2}
   - first:
