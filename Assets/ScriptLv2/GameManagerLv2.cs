@@ -1,19 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameManagerLv2 : MonoBehaviour
 {
-    public GameObject modelRig;
-    // Start is called before the first frame update
+    public Action<int> OnAvatarChange;
+    
     void Start()
     {
-        modelRig.SetActive(true);
+        OnAvatarChange(0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

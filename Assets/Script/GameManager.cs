@@ -200,11 +200,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void OnNotGrab(GameObject Clip)
-    {
-
-    }
-
     public void OnSnapClip()
     {
         foreach (var item in Case.GetComponentsInChildren<MeshRenderer>())
@@ -271,13 +266,13 @@ public class GameManager : MonoBehaviour
                 GlueController.instance.SecurePillow();
                 AudioMain.instance.EventPlayClip(56, false);
             }
-            Pillow = Instantiate(Resources.Load(prefabName1, typeof(GameObject))) as GameObject;
+            Pillow = Instantiate(Resources.Load("Prefab/weidang", typeof(GameObject))) as GameObject;
             Pillow.GetComponent<IgnoreColliders>().CollidersToIgnore.Add(RigController);
             PrefabCount_1++;
         }
         if (PrefabCount_2 < 1 && SwitchPrefab)
         {
-            Cloth = Instantiate(Resources.Load(prefabName2, typeof(GameObject))) as GameObject;
+            Cloth = Instantiate(Resources.Load("Prefab/FrictionCloth", typeof(GameObject))) as GameObject;
             Cloth.transform.parent = GameObject.Find("Obi Solver").transform;
             PrefabCount_2++;
             Glue.GetComponent<HighlightEffect>().enabled = true;
