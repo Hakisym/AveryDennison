@@ -6,11 +6,11 @@ using BNG;
 
 public class SuitController : MonoBehaviour
 {
-    private ButtonUIController buttonUIController;
+    private IButton buttonUIController;
 
     private void Awake()
     {
-        buttonUIController = GetComponent<ButtonUIController>();
+        buttonUIController = GetComponent<IButton>();
         buttonUIController.OnRightButtonClicked += ClickedRightSuit;
     }
 

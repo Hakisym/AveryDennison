@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class WrongButtonController : MonoBehaviour
 {
-    private ButtonUIController buttonUIController;
+    private IButton buttonUIController;
 
     private void Awake()
     {
-        buttonUIController = GetComponent<ButtonUIController>();
+        buttonUIController = GetComponent<IButton>();
         buttonUIController.OnWrongButtonClicked += ClickedWrongButton;
     }
 
