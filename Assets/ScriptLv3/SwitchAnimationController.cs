@@ -5,15 +5,13 @@ using UnityEngine.EventSystems;
 
 public class SwitchAnimationController : MonoBehaviour
 {
-    private RaycastPointer raycastPointer;
 
     private void Awake()
     {
-        raycastPointer = GetComponent<RaycastPointer>();
-        raycastPointer.OnRaycastClicked += ActivateTwistButtonAnimation;
+        GetComponent<RaycastPointer>().OnRaycastClicked += HandleTwistButtonAnimation;
     }
 
-    void ActivateTwistButtonAnimation(PointerEventData eventData)
+    void HandleTwistButtonAnimation(PointerEventData eventData)
     {
         GetComponentInParent<Animator>().enabled = true;
         AudioMain.instance.EventPlayClip(6, false);

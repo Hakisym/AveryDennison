@@ -75406,7 +75406,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2117717461}
-  - component: {fileID: 2117717462}
   m_Layer: 0
   m_Name: LevelColliders
   m_TagString: Untagged
@@ -75430,21 +75429,6 @@ Transform:
   m_Father: {fileID: 1610945}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2117717462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2117717460}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25755bae2af0b874a81ade7a1bd4ec80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Levels:
-  - {fileID: 849250540}
-  - {fileID: 0}
 --- !u!1 &2120716237
 GameObject:
   m_ObjectHideFlags: 0
@@ -80485,13 +80469,14 @@ GameObject:
   - component: {fileID: 1763172489538178852}
   - component: {fileID: 1763172489538178848}
   - component: {fileID: 1763172489538178851}
+  - component: {fileID: 1763172489538178853}
   m_Layer: 0
   m_Name: buttonRotateWithFunction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1763172489538178848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80553,6 +80538,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a535a30c64dbac24eba9789c5f3ee229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1763172489538178853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763172489538178847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744b3611da944e54da5e532e02ae2454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxDistance: 100
+  Enabled: 1
+  OnPointerClickEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerEnterEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerExitEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerDownEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerUpEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1784747259591643553
 GameObject:
   m_ObjectHideFlags: 0

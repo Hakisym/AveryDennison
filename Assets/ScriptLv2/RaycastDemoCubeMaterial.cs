@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BNG;
 
 public class RaycastDemoCubeMaterial : MonoBehaviour
 {
-    private RaycastPointer raycastPointer;
     private Material DemoCubeMaterialHightlight
     {
         get { return Resources.Load<Material>("Materials/DemoCube/GridOrange"); }
@@ -16,13 +16,12 @@ public class RaycastDemoCubeMaterial : MonoBehaviour
 
     private void Awake()
     {
-        raycastPointer = GetComponent<RaycastPointer>();
-        raycastPointer.OnDemoCubeInitialize += OnClicked;
+        GetComponent<RaycastPointer>().OnDemoCubeInitialize += HandleDemoCubeMaterial;
     }
 
-    void OnClicked()
+    void HandleDemoCubeMaterial()
     {
-        raycastPointer.demoCube.HighlightMaterial = DemoCubeMaterialHightlight;
-        raycastPointer.demoCube.ActiveMaterial = DemoCubeMaterialActive;
+        GetComponent<DemoCube>().HighlightMaterial = DemoCubeMaterialHightlight;
+        GetComponent<DemoCube>().ActiveMaterial = DemoCubeMaterialActive;
     }
 }

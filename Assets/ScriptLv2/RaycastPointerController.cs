@@ -5,24 +5,18 @@ using UnityEngine;
 
 public class RaycastPointerController : MonoBehaviour
 {
-    private RaycastPointer raycastPointer;
     private PointerEvents pointerEvents;
     private DemoCube demoCube;
 
     private void Awake()
     {
-        raycastPointer = GetComponent<RaycastPointer>();
-        raycastPointer.OnPointerEventsInitialize += OnClicked;
+        GetComponent<RaycastPointer>().OnPointerEventsInitialize += HandlePointerEventListener;
     }
 
-    void OnClicked()
+    void HandlePointerEventListener()
     {
         pointerEvents = GetComponent<PointerEvents>();
         demoCube = GetComponent<DemoCube>();
-        if (pointerEvents.OnPointerEnterEvent!=null)
-        {
-            Debug.Log(pointerEvents.OnPointerEnterEvent);
-        }
 
         pointerEvents.OnPointerEnterEvent.AddListener(demoCube.SetHovering);
         pointerEvents.OnPointerExitEvent.AddListener(demoCube.ResetHovering);
