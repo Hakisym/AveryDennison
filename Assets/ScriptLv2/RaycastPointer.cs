@@ -16,15 +16,17 @@ public class RaycastPointer : MonoBehaviour
 
     private void Awake()
     {
-        pointerEvents = gameObject.AddComponent<PointerEvents>();
-        demoCube = gameObject.AddComponent<DemoCube>();
+        pointerEvents =GetComponent<PointerEvents>();
+        demoCube = GetComponent<DemoCube>();
     }
 
     private void Start()
     {
-        pointerEvents.OnPointerClickEvent.AddListener(OnRaycastClicked);
         OnDemoCubeInitialize();
         OnPointerEventsInitialize();
+        if (OnRaycastClicked != null)
+        {
+            pointerEvents.OnPointerClickEvent.AddListener(OnRaycastClicked);
+        }
     }
-
 }

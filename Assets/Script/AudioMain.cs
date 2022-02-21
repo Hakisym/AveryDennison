@@ -16,12 +16,11 @@ public class AudioMain : MonoBehaviour
     public AudioClip[] audioclips;
     
 
-    void Start()
+    void Awake()
     {
         instance = this;
-
-
     }
+
     public void EventPlayClip(int clip, bool isloop)
     {
         if(Eventaudio.clip == audioclips[clip])

@@ -27,6 +27,7 @@ public class GameManagerLv3 : MonoBehaviour
     {
         instance = this;
         modelRig[0].SetActive(true);
+        AudioMain.instance.PlayDoubleDelay(1,2,3);
     }
 
 
@@ -65,6 +66,7 @@ public class GameManagerLv3 : MonoBehaviour
                 LevelColliders[1].SetActive(true);
                 HMDIcon[0].SetActive(false);
                 highlights[0].enabled = true;
+                AudioMain.instance.EventPlayClip(4, false);
             }
             startTime += Time.deltaTime;
             yield return null;
@@ -91,14 +93,14 @@ public class GameManagerLv3 : MonoBehaviour
         UI[1].SetActive(false);
         GeneratePPE();
         UI[2].SetActive(true);
-        //AudioMain.instance.EventPlayClip(26, false);
+        AudioMain.instance.PlayDelayClip(7, 9);
     }
 
     public void WrongPPE(GameObject Button)
     {
+        AudioMain.instance.EventPlayClip(8, false);
         if (PPECount == 0)
         {
-            //AudioMain.instance.EventPlayClip(25, false);
             Button.SetActive(false);
             PPECount++;
         }
@@ -123,5 +125,16 @@ public class GameManagerLv3 : MonoBehaviour
     }
     #endregion
 
-    
+    #region AudioInstance
+    public void PlayEventClip(int clip)
+    {
+        AudioMain.instance.EventPlayClip(clip, false);
+    }
+
+    public void PlayDoubleClip(int clip)
+    {
+        AudioMain.instance.PlayDelayClip(clip, clip + 1);
+    }
+    #endregion
+
 }

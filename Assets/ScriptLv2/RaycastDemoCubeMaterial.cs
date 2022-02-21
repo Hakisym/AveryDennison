@@ -5,9 +5,13 @@ using UnityEngine;
 public class RaycastDemoCubeMaterial : MonoBehaviour
 {
     private RaycastPointer raycastPointer;
-    public Material[] DemoCubeMaterials
+    private Material DemoCubeMaterialHightlight
     {
-        get { return Resources.LoadAll<Material>("Materials/DemoCube"); }
+        get { return Resources.Load<Material>("Materials/DemoCube/GridOrange"); }
+    }
+    private Material DemoCubeMaterialActive
+    {
+        get { return Resources.Load<Material>("Materials/DemoCube/GridYellow"); }
     }
 
     private void Awake()
@@ -18,7 +22,7 @@ public class RaycastDemoCubeMaterial : MonoBehaviour
 
     void OnClicked()
     {
-        raycastPointer.demoCube.HighlightMaterial = DemoCubeMaterials[Random.Range(0, DemoCubeMaterials.Length)];
-        raycastPointer.demoCube.ActiveMaterial = DemoCubeMaterials[Random.Range(0, DemoCubeMaterials.Length)];
+        raycastPointer.demoCube.HighlightMaterial = DemoCubeMaterialHightlight;
+        raycastPointer.demoCube.ActiveMaterial = DemoCubeMaterialActive;
     }
 }

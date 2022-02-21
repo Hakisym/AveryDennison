@@ -1,3 +1,4 @@
+using BNG;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class RaycastPointerController : MonoBehaviour
 {
     private RaycastPointer raycastPointer;
+    private PointerEvents pointerEvents;
+    private DemoCube demoCube;
 
     private void Awake()
     {
@@ -14,9 +17,16 @@ public class RaycastPointerController : MonoBehaviour
 
     void OnClicked()
     {
-        raycastPointer.pointerEvents.OnPointerEnterEvent.AddListener(raycastPointer.demoCube.SetHovering);
-        raycastPointer.pointerEvents.OnPointerExitEvent.AddListener(raycastPointer.demoCube.ResetHovering);
-        raycastPointer.pointerEvents.OnPointerDownEvent.AddListener(raycastPointer.demoCube.SetActive);
-        raycastPointer.pointerEvents.OnPointerUpEvent.AddListener(raycastPointer.demoCube.SetInactive);
+        pointerEvents = GetComponent<PointerEvents>();
+        demoCube = GetComponent<DemoCube>();
+        if (pointerEvents.OnPointerEnterEvent!=null)
+        {
+            Debug.Log(pointerEvents.OnPointerEnterEvent);
+        }
+
+        pointerEvents.OnPointerEnterEvent.AddListener(demoCube.SetHovering);
+        pointerEvents.OnPointerExitEvent.AddListener(demoCube.ResetHovering);
+        pointerEvents.OnPointerDownEvent.AddListener(demoCube.SetActive);
+        pointerEvents.OnPointerUpEvent.AddListener(demoCube.SetInactive);
     }
 }

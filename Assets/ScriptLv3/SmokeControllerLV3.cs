@@ -9,6 +9,7 @@ public class SmokeControllerLV3 : MonoBehaviour
     internal int i = 0;
     RaycastHit hit;
     float time;
+    private bool IsPinRemoved;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +32,7 @@ public class SmokeControllerLV3 : MonoBehaviour
                 if (i == 101)
                 {
                     i++;
-                    GameManagerLv3.instance.Fire.Stop();
+                    StopFireandPlayAudio();
                 }
 
             }
@@ -43,11 +44,26 @@ public class SmokeControllerLV3 : MonoBehaviour
 
     public void Hold()
     {
+        if(IsPinRemoved)
         ps.Play();
-
     }
     public void UnHold()
     {
         ps.Stop();
+    }
+
+    void StopFireandPlayAudio() {
+
+        GameManagerLv3.instance.Fire.Stop();
+        //Also disable the UI arrow 
+        GameObject.Find("ArrowsForFlammableObject").SetActive(false);
+        //Play Audio Instance
+        AudioMain.instance.PlayDelayClip(15,16);
+
+    }
+
+    public void CheckIfPinRemoved()
+    {
+        IsPinRemoved = true;
     }
 }
