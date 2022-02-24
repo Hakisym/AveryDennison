@@ -5,11 +5,12 @@ using System;
 
 public class GameManagerLv2 : MonoBehaviour
 {
-    public Action<int> OnAvatarChange;
+    public Action<int> OnAvatarChange = delegate { };
     
     void Start()
     {
         OnAvatarChange(0);
+        InventoryList.instance.UICanvas.Find("00_Avatar").gameObject.SetActive(true);
     }
 
 }

@@ -14,7 +14,6 @@ public class RightElectrostaticRods : MonoBehaviour
 
     void ClickedRightElectrostaticRods()
     {
-        //Highlight Water spray humidifier
-
+        InventoryList.instance.RaycastObject.Find("05_WaterSprayHumidifier").gameObject.SetActive(true);
     }
 }

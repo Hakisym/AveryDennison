@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class RightMainframeController : MonoBehaviour
 {
-    private IButton buttonUIController;
-
     private void Awake()
     {
-        buttonUIController = GetComponent<IButton>();
-        buttonUIController.OnRightButtonClicked += ClickedRightMainFrame;
+        GetComponent<IButton>().OnRightButtonClicked += ClickedRightMainFrame;
     }
 
     void ClickedRightMainFrame()
     {
-        //UV highlight
+        InventoryList.instance.RaycastObject.Find("02_UVCamera").gameObject.SetActive(true);
 
     }
 }

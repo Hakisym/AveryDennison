@@ -6,17 +6,16 @@ using BNG;
 
 public class SuitController : MonoBehaviour
 {
-    private IButton buttonUIController;
 
     private void Awake()
     {
-        buttonUIController = GetComponent<IButton>();
-        buttonUIController.OnRightButtonClicked += ClickedRightSuit;
+        GetComponent<IButton>().OnRightButtonClicked += ClickedRightSuit;
     }
 
     void ClickedRightSuit()
     {
         HandModelSelector modelSelector = GameObject.FindObjectOfType<HandModelSelector>();
         modelSelector.ChangeHandsModel(1, false);
+        InventoryList.instance.RaycastObject.Find("01_Mainframe").gameObject.SetActive(true);
     }
 }

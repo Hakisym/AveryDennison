@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class WrongButtonController : MonoBehaviour
 {
-    private IButton buttonUIController;
+    private Sprite HighlightBorderImage
+    {
+        get
+        {
+            return Resources.Load<Sprite>("Sprite/TitleBorder");
+        }
+    }
 
     private void Awake()
     {
-        buttonUIController = GetComponent<IButton>();
-        buttonUIController.OnWrongButtonClicked += ClickedWrongButton;
+        GetComponent<IButton>().OnWrongButtonClicked += ClickedWrongButton;
     }
 
     void ClickedWrongButton()
@@ -20,7 +25,11 @@ public class WrongButtonController : MonoBehaviour
             for (int i = 0; i < _button.onClick.GetPersistentEventCount(); i++)
             {
                 if (_button.onClick.GetPersistentMethodName(i) == "RightButton")
-                    _button.GetComponent<Image>().sprite = buttonUIController.HighlightBorderImage;
+                {
+                    _button.GetComponent<Image>().sprite = HighlightBorderImage;
+                    break;
+                }
+                    
             }
         }
     }

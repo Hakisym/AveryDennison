@@ -20,10 +20,10 @@ public class SelectorUIController : MonoBehaviour,ISelector
 {
     private int WrongButtonSelect;
 
-    public Action OnRightButtonSelect { get; set; }
-    public Action OnWrongButtonSelect { get; set; }
+    public Action OnRightButtonSelect { get; set; } = delegate { };
+    public Action OnWrongButtonSelect { get; set; } = delegate { };
 
-    public void RightButton(HighlightEffect highlightEffect)
+    public virtual void RightButton(HighlightEffect highlightEffect)
     {
         gameObject.SetActive(false);
         OnRightButtonSelect();
@@ -33,7 +33,7 @@ public class SelectorUIController : MonoBehaviour,ISelector
     {
         highlightEffect.gameObject.SetActive(false);
         WrongButtonSelect++;
-        if (WrongButtonSelect >= 2 && OnWrongButtonSelect != null)
+        if (WrongButtonSelect >= 2)
             OnWrongButtonSelect();
     }
 }
