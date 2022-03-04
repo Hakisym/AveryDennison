@@ -13,6 +13,6 @@ public class PointerClickedRods : MonoBehaviour
     void HandleClickedRods(PointerEventData pointerEvent)
     {
         gameObject.SetActive(false);
-        InventoryList.instance.UICanvas.Find("04_ElectrostaticRods").gameObject.SetActive(true);
+        InventoryList.instance.UICanvas.Find("04_ElectrostaticRodsFirst").gameObject.SetActive(true);
     }
 }

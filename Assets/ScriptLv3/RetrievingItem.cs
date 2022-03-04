@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[SelectionBase]
 public class RetrievingItem : MonoBehaviour
 {
     private Vector3 StartPosition;

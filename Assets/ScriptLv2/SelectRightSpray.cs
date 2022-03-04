@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SelectRightSpray : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] GrabbableFlammableObjects;
+
     private void Awake()
     {
         GetComponent<SelectorUIController>().OnRightButtonSelect += HandleRightSpray;
@@ -11,6 +14,8 @@ public class SelectRightSpray : MonoBehaviour
 
     void HandleRightSpray()
     {
-        InventoryList.instance.Selector.Find("06_FlammableObject").gameObject.SetActive(true);
+        InventoryList.instance.HighlightObjects.Find("01_TrashCan").gameObject.SetActive(true);
+        foreach (var item in GrabbableFlammableObjects)
+            item.SetActive(true);
     }
 }

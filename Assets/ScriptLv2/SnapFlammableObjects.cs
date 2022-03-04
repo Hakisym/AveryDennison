@@ -18,6 +18,14 @@ public class SnapFlammableObjects : MonoBehaviour
         snapZone.HeldItem.gameObject.SetActive(false);
         snapZone.ReleaseAll();
         Count++;
-        gameObject.SetActive(Count < 3);
+        if (Count >= 3)
+        {
+            gameObject.SetActive(false);
+            InventoryList.instance.HighlightObjects.Find("02_MediumFlames").gameObject.SetActive(true);
+            //Find the Yellow Switch and turn on its component
+            GameObject.Find("YellowSwitch").GetComponentInChildren<HighlightPlus.HighlightEffect>().enabled = true;
+            GameObject.Find("YellowSwitch").GetComponentInChildren<BoxCollider>().enabled = true;
+            //Insert Audio
+        }
     }
 }

@@ -12,7 +12,7 @@ public class RightElectrostaticRods : MonoBehaviour
         buttonUIController.OnRightButtonClicked += ClickedRightElectrostaticRods;
     }
 
-    void ClickedRightElectrostaticRods()
+    internal virtual void ClickedRightElectrostaticRods()
     {
         InventoryList.instance.RaycastObject.Find("05_WaterSprayHumidifier").gameObject.SetActive(true);
     }
