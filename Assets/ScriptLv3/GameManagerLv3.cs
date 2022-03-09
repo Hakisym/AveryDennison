@@ -58,7 +58,7 @@ public class GameManagerLv3 : MonoBehaviour
         {
             temp = Mathf.Lerp(220, 30, EaseOut(startTime / 30));
             temp.ToString("F0");
-            text1.text = string.Format("{0:F0}∞C", temp);
+            text1.text = string.Format("{0:F0}°„C", temp);
             if(temp<=50 && !isEqual)
             {
                 isEqual = true;
@@ -78,11 +78,15 @@ public class GameManagerLv3 : MonoBehaviour
     #region Locktwo
     public void CountLock()
     {
+        //Insert Audio Clip
+        AudioMain.instance.EventPlayClip(5, false);
         LockCount++;
         if (LockCount == 2)
         {
             HMDIcon[1].SetActive(false);
             UI[1].SetActive(true);
+            //Insert Audio Clip
+            AudioMain.instance.EventPlayClip(17, false);
         }
     }
     #endregion
@@ -114,9 +118,7 @@ public class GameManagerLv3 : MonoBehaviour
 
     public void GeneratePPE()
     {
-        modelRig[0].SetActive(false);
-        modelRig[1].SetActive(true);
-        modelSelector.ChangeHandsModel(2, false);
+        modelSelector.ChangeHandsModel(1, false);
     }
     protected IEnumerator AutoHide2()
     {

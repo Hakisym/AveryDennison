@@ -12,6 +12,6 @@ public class RightMainframeController : MonoBehaviour
     void ClickedRightMainFrame()
     {
         InventoryList.instance.RaycastObject.Find("02_UVCamera").gameObject.SetActive(true);
-
+        AudioMain.instance.PlayDelayClip(6, 9);
     }
 }

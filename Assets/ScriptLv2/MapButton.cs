@@ -11,6 +11,7 @@ public class MapButton : MonoBehaviour
     {
         gameObject.SetActive(false);
         //Insert Audio
+        AudioMain.instance.PlayDelayClip(31, 34);
     }
 
     public void WrongButton(GameObject Button)
@@ -18,12 +19,14 @@ public class MapButton : MonoBehaviour
         if (_buttonCount == 0)
         {
             //Insert Audio
+            AudioMain.instance.EventPlayClip(32, false);
             Button.SetActive(false);
             _buttonCount++;
         }
         else
         {
             //Insert Audio
+            AudioMain.instance.EventPlayClip(33, false);
             foreach (var item in GetComponentsInChildren<Button>())
             {
                 //Disable all Buttons except the correct one
@@ -37,14 +40,6 @@ public class MapButton : MonoBehaviour
             cb.disabledColor = Color.black;
             cb.colorMultiplier = 1.0f;
             transform.Find("ButtonA").GetComponent<Button>().colors = cb;
-            StartCoroutine(AutoHide3());
         }
-    }
-
-
-    protected IEnumerator AutoHide3()
-    {
-        yield return new WaitForSeconds(5);
-        RightButton();
     }
 }

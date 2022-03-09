@@ -15,7 +15,7 @@ public class WrongButtonController : MonoBehaviour
 
     private void Awake()
     {
-        GetComponent<IButton>().OnWrongButtonClicked += ClickedWrongButton;
+        GetComponent<IButton>().OnWrongButtonClickedTwice += ClickedWrongButton;
     }
 
     void ClickedWrongButton()

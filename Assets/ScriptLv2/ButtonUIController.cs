@@ -7,7 +7,8 @@ using System;
 interface IButton
 {
     public Action OnRightButtonClicked { get; set; }
-    public Action OnWrongButtonClicked { get; set; }
+    public Action OnWrongButtonClickedOnce { get; set; }
+    public Action OnWrongButtonClickedTwice { get; set; }
     public void RightButton(Button button);
     public void WrongButton(Button button);
 }
@@ -15,7 +16,9 @@ interface IButton
 public class ButtonUIController : MonoBehaviour, IButton
 {
     public Action OnRightButtonClicked { get; set; } = () => { };
-    public Action OnWrongButtonClicked { get; set; } = () => { };
+    public Action OnWrongButtonClickedOnce { get; set; } = () => { }; 
+    public Action OnWrongButtonClickedTwice { get; set; } = () => { };
+
 
     private int WrongButtonClicked;
 
@@ -28,8 +31,9 @@ public class ButtonUIController : MonoBehaviour, IButton
     public void WrongButton(Button button)
     {
         button.gameObject.SetActive(false);
+        OnWrongButtonClickedOnce();
         WrongButtonClicked++;
         if(WrongButtonClicked>=2)
-            OnWrongButtonClicked();
+            OnWrongButtonClickedTwice();
     }
 }

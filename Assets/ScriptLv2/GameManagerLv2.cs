@@ -11,6 +11,7 @@ public class GameManagerLv2 : MonoBehaviour
     {
         OnAvatarChange(0);
         InventoryList.instance.UICanvas.Find("00_Avatar").gameObject.SetActive(true);
+        AudioMain.instance.EventPlayClip(1, false);
     }
 
 }

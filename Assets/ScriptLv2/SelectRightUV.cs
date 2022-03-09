@@ -12,5 +12,6 @@ public class SelectRightUV : MonoBehaviour
     void HandleRightUV()
     {
         InventoryList.instance.RaycastObject.Find("03_Ventilation").gameObject.SetActive(true);
+        AudioMain.instance.PlayDelayClip(10, 12);
     }
 }

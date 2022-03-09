@@ -17,5 +17,7 @@ public class SuitController : MonoBehaviour
         HandModelSelector modelSelector = GameObject.FindObjectOfType<HandModelSelector>();
         modelSelector.ChangeHandsModel(1, false);
         InventoryList.instance.RaycastObject.Find("01_Mainframe").gameObject.SetActive(true);
+        AudioMain.instance.PlayDelayClip(6, 5);
+
     }
 }

@@ -26,6 +26,7 @@ public class SnapFlammableObjects : MonoBehaviour
             GameObject.Find("YellowSwitch").GetComponentInChildren<HighlightPlus.HighlightEffect>().enabled = true;
             GameObject.Find("YellowSwitch").GetComponentInChildren<BoxCollider>().enabled = true;
             //Insert Audio
+            AudioMain.instance.EventPlayClip(26, false);
         }
     }
 }

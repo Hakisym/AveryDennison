@@ -6,6 +6,7 @@ public class SmokeControllerLV3 : MonoBehaviour
 {
     public static SmokeControllerLV3 instance;
     public ParticleSystem ps;
+    public GameObject ExitButton;
     internal int i = 0;
     RaycastHit hit;
     float time;
@@ -59,7 +60,8 @@ public class SmokeControllerLV3 : MonoBehaviour
         GameObject.Find("ArrowsForFlammableObject").SetActive(false);
         //Play Audio Instance
         AudioMain.instance.PlayDelayClip(15,16);
-
+        //Find the Exit Button
+        ExitButton.SetActive(true);
     }
 
     public void CheckIfPinRemoved()

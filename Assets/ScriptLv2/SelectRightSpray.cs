@@ -15,6 +15,7 @@ public class SelectRightSpray : MonoBehaviour
     void HandleRightSpray()
     {
         InventoryList.instance.HighlightObjects.Find("01_TrashCan").gameObject.SetActive(true);
+        AudioMain.instance.PlayDelayClip(23, 25);
         foreach (var item in GrabbableFlammableObjects)
             item.SetActive(true);
     }
