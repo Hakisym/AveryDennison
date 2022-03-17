@@ -40409,6 +40409,7 @@ GameObject:
   - component: {fileID: 1316339249}
   - component: {fileID: 1316339248}
   - component: {fileID: 1316339247}
+  - component: {fileID: 1316339250}
   m_Layer: 0
   m_Name: AudioMain
   m_TagString: Untagged
@@ -40560,6 +40561,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1316339250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316339246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26cc0f46779fc8f47b00d7a3b0f19cac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1318481823
 GameObject:
   m_ObjectHideFlags: 0
@@ -62908,7 +62921,7 @@ PrefabInstance:
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
@@ -62933,7 +62946,7 @@ PrefabInstance:
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
@@ -62959,7 +62972,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
-      objectReference: {fileID: 357257034}
+      objectReference: {fileID: 1763172489538178851}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -63008,7 +63021,7 @@ PrefabInstance:
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: PlayEventClip
+      value: set_enabled
       objectReference: {fileID: 0}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
@@ -63033,12 +63046,12 @@ PrefabInstance:
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: GameManagerLv3, Assembly-CSharp
+      value: UnityEngine.Collider, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
       propertyPath: OnSnapEvent.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_IntArgument
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 292154147353046214, guid: 62f4987b7e086ff43ab61a31ee443048,
         type: 3}
@@ -70861,7 +70874,7 @@ BoxCollider:
   m_GameObject: {fileID: 1763172489538178847}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 37.560753, y: 50.120903, z: 10.706769}
   m_Center: {x: 0, y: 1.9537957, z: 0.00048801306}

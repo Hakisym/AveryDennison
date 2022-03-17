@@ -33,7 +33,6 @@ public class SmokeController : MonoBehaviour
 
                     text.text = i + "%";
                     GameManager.instance.HighlightController(GameManager.instance.Glue, false);
-                    AudioMain.instance.EventPlayClip(29, false);
                 }
                 if(hit.collider.gameObject.name == "CenterCol")
                 {
@@ -48,6 +47,7 @@ public class SmokeController : MonoBehaviour
         {
             i++;
             GameManager.instance.Napkin();
+            AudioMain.instance.EventPlayClip(29, false);
         }
 
     }
