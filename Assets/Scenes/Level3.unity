@@ -3371,6 +3371,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 94453372}
   m_PrefabAsset: {fileID: 0}
+--- !u!143 &94453375 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 729347668519019347, guid: bbe73b8a8bf1a6748a89e710c921b3f9,
+    type: 3}
+  m_PrefabInstance: {fileID: 94453372}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &94453377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1996026846, guid: bbe73b8a8bf1a6748a89e710c921b3f9,
@@ -16460,6 +16466,7 @@ GameObject:
   - component: {fileID: 456982290}
   - component: {fileID: 456982288}
   - component: {fileID: 456982287}
+  - component: {fileID: 456982289}
   m_Layer: 0
   m_Name: SmallFireExtinguisher
   m_TagString: Untagged
@@ -16605,6 +16612,21 @@ MonoBehaviour:
   hitFxFadeOutDuration: 0.25
   hitFxColor: {r: 1, g: 1, b: 1, a: 1}
   hitFxRadius: 0.5
+--- !u!114 &456982289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 456982286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01404a5a30ea2e4db8fd7d34b4390b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollidersToIgnore:
+  - {fileID: 742138025}
+  - {fileID: 94453375}
 --- !u!114 &456982290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16651,6 +16673,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.Rigidbody, UnityEngine
         m_MethodName: set_useGravity
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2004561615}
+        m_TargetAssemblyTypeName: SmokeControllerLV3, Assembly-CSharp
+        m_MethodName: UnHold
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
