@@ -76985,13 +76985,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729620919}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0.059, z: 0}
+  m_LocalScale: {x: 1.6500001, y: 1.6500001, z: 1.6500001}
   m_Children: []
   m_Father: {fileID: 2005759086}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1729620921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77122,8 +77122,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.35671562, y: 0.5699481, z: 0.4246022}
-  m_Center: {x: 0.0029325113, y: 0.26893723, z: 0.004015468}
+  m_Size: {x: 0.30497038, y: 0.28897583, z: 0.30096316}
+  m_Center: {x: 0.008124493, y: 0.0035397643, z: 0.053627044}
 --- !u!23 &1729620923
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -77143,7 +77143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4f2ceef420c967c40be47636dd2200f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -77172,7 +77172,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729620919}
-  m_Mesh: {fileID: -4529462245052079423, guid: 12fa8340335e6674d84c68e03d5e2641, type: 3}
+  m_Mesh: {fileID: -7367056666926260913, guid: 97451dba1a409774190f154018e13a83, type: 3}
 --- !u!1 &1729653372
 GameObject:
   m_ObjectHideFlags: 0
@@ -90867,7 +90867,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005759085}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.925, y: 0.045, z: 4.057}
+  m_LocalPosition: {x: 2.925, y: 0.096, z: 4.057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1729620920}
