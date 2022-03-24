@@ -11,6 +11,6 @@ public class VRRenderScale : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        XRSettings.eyeTextureResolutionScale = 1.5f;
+        XRSettings.eyeTextureResolutionScale = 1.35f;
     }
 }
