@@ -7,8 +7,8 @@ public class AudioMain : MonoBehaviour
     public static AudioMain instance;
 
     //[Header("Background music")]
-    public AudioSource Bgmusic;
-    public AudioClip[] BGaudioclips;
+    public AudioClip[] CNClips;
+    public AudioClip[] ENClips;
     [Space(60)]
 
    // [Header("Event music")]
@@ -19,6 +19,13 @@ public class AudioMain : MonoBehaviour
     void Awake()
     {
         instance = this;
+        if (PlayerPrefs.GetInt("UseEnglish") == 1)
+        {
+            audioclips = ENClips;
+        }else
+        {
+            audioclips = CNClips;
+        }
     }
 
     public void EventPlayClip(int clip, bool isloop)
@@ -30,13 +37,6 @@ public class AudioMain : MonoBehaviour
         Eventaudio.clip = audioclips[clip];
         Eventaudio.loop = isloop;
         Eventaudio.Play();
-    }
-
-    public void BgPlayClip(int clip, bool isloop)
-    {
-        Bgmusic.clip = BGaudioclips[clip];
-        Bgmusic.loop = isloop;
-        Bgmusic.Play();
     }
 
     public void PlayDelayClip(int clip,int clip2)
