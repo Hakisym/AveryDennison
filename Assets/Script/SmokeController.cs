@@ -48,6 +48,9 @@ public class SmokeController : MonoBehaviour
             i++;
             GameManager.instance.Napkin();
             AudioMain.instance.EventPlayClip(29, false);
+
+            //callback of ArrowManager
+            ArrowManager.Instance.OpenArrow("OutsideRight");
         }
 
     }

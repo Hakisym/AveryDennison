@@ -184,6 +184,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("Clicked Power Button");
             GrabbableCollider(Clipper, true);
             Arrow2.gameObject.SetActive(false);
+            //add arrow indicator(pot)
+            Arrow1.gameObject.SetActive(true);
             AudioMain.instance.PlayDelayClip(9, 10);
         }
         else
@@ -302,12 +304,14 @@ public class GameManager : MonoBehaviour
         ChemicalCount++;
         if (ChemicalCount >= 5)
         {
-            animator.SetTrigger("Close");
-            ClothDIsappear.instance.Bag.enabled = false;
+            ClothDIsappear.instance.Bag.gameObject.SetActive(false);
             fire.gameObject.SetActive(true);
             BFireExt.enabled = true;
             BFireExt.GetComponent<HighlightEffect>().enabled = true;
             AudioMain.instance.PlayDoubleDelay(31, 32, 33);
+
+            //callback of ArrowManager
+            ArrowManager.Instance.OpenArrow("OutsideLeft");
         }
     }
 

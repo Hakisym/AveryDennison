@@ -59,6 +59,9 @@ public class FIreExtinguisher : MonoBehaviour
                         GameManager.instance.YellowCap.enabled = true;
                         GameManager.instance.YellowCap.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
                         AudioMain.instance.EventPlayClip(35, false);
+
+                        //callback of ArrowManager
+                        ArrowManager.Instance.OpenArrow("OutsideRight");
                     }
                     
                 }
@@ -100,7 +103,7 @@ public class FIreExtinguisher : MonoBehaviour
         ValRunning = true;
         while (startTime < 3)
         {
-            Hose.transform.GetChild(0).localRotation = Quaternion.Lerp(Quaternion.Euler(0, -21.608f,0), Quaternion.Euler(0, -21.608f, 90), startTime / 3);
+            Hose.transform.GetChild(0).localRotation = Quaternion.Lerp(Quaternion.Euler(0, -21.608f,90), Quaternion.Euler(0, -21.608f, 0), startTime / 3);
             startTime += Time.deltaTime;
             yield return null;
         }

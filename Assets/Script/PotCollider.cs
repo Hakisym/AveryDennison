@@ -59,6 +59,9 @@ public class PotCollider : MonoBehaviour
             GameManager.instance.GrabbableCollider(Walkie, true);
             Walkie.GetComponent<HighlightPlus.HighlightEffect>().enabled = true;
 
+            //callback of ArrowManager
+            ArrowManager.Instance.OpenArrow("OutsideLeft");
+
             GameManager.instance.Arrow3.gameObject.SetActive(false);
             AudioMain.instance.PlayDelayClip(18, 19);
         }
